@@ -7,7 +7,7 @@ import { ScratchCard } from "../scrachWidget/scratchDemo";
 import { WheelWidget2 } from "../WheelWIdget2/wheelWidget2";
 import { WheelWidget3 } from "../WheelWidget3/wheelWidget3";
 
-import "./WidgetSlider.css";
+import "./widgetSlider.css";
 
 const widgets = [
   {
