@@ -1,0 +1,83 @@
+.scratch-card {
+    position: relative;
+    width: 300px; /* גודל הגלגל */
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 40px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  }
+  .scratch-background{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300px; /* אותו גודל כמו הגלגל */
+    height: 300px;
+    background-image: url('/images/backgroundScratch.png');
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+    border-radius: 40px;
+
+  }
+  
+  .scratch-content {
+
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    text-align: center;
+    pointer-events: none;
+  }
+  
+  .prize-amount {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+  
+  .scratch-overlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    touch-action: none;
+  }
+  
+  .scratch-text {
+    position: absolute;
+    top: 52%;
+    left: 52%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    pointer-events: none;
+  }
+  
+  .scratch-text img {
+    width: 300px; /* או השתמש ב width ו height */
+    height: 300px;
+    z-index: 5;
+  }
+  .collect-button {
+    background: #9333ea;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    pointer-events: auto;
+  }
+  
+  .collect-button:hover {
+    background: #7e22ce;
+  }
+  

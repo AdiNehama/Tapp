@@ -1,0 +1,154 @@
+.widget-slider {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+  
+  .slider-content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 1200px;
+    gap: 2rem;
+  }
+  
+  .slider-container {
+    position: relative;
+    width: 400px;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+  }
+  
+  .slider-slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .nav-button {
+    background: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #9333ea;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    transition: all 0.2s;
+  }
+  
+  .nav-button:hover {
+    background: #f9fafb;
+    transform: scale(1.05);
+  }
+  
+  .nav-button:active {
+    transform: scale(0.95);
+  }
+  
+  .widget-info {
+    text-align: center;
+    max-width: 400px;
+  }
+  
+  .widget-info h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 0.5rem;
+  }
+  
+  .widget-info p {
+    color: #4b5563;
+  }
+  
+  .slider-dots {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #e5e7eb;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .dot.active {
+    background: #9333ea;
+    transform: scale(1.2);
+  }
+  
+  /* Demo Widgets Styles */
+  .demo-widget {
+    background: white;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    width: 160px;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  }
+  
+  .demo-widget h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #1f2937;
+  }
+  
+  .demo-widget p {
+    font-size: 0.875rem;
+    color: #4b5563;
+  }
+  
+  /* Challenge Widget */
+  .progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #f3f4f6;
+    border-radius: 9999px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+  }
+  
+  .progress {
+    height: 100%;
+    background: linear-gradient(to right, #9333ea, #3b82f6);
+    border-radius: 9999px;
+    transition: width 0.3s ease;
+  }
+  
+  /* Game Widget */
+  .game-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+  
+  .game-card {
+    aspect-ratio: 1;
+    background: #f3f4f6;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .game-card:hover {
+    background: #e5e7eb;
+  }
