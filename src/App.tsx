@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import  { useRef } from 'react';
 import { WidgetSlider } from '../src/components/widgetSlider/widgetSlider';
 import { ArrowRight, Sparkles, RefreshCcw, Zap, BarChart3, CheckCircle2, Gamepad2, Rocket } from 'lucide-react';
 import './App.css';
