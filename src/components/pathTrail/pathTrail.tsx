@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./PathTrail.css";
+import "./pathTrail.css";
 
 const PathTrail = () => {
   const [progress, setProgress] = useState(0);
