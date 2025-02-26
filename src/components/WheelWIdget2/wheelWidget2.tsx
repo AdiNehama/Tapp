@@ -42,11 +42,36 @@ export function WheelWidget2({ setShowImageOverlay }: { setShowImageOverlay: (va
   const [showCollect, setShowCollect] = useState(false);
   const [isWheelStopped, setIsWheelStopped] = useState(false);
   const [wonPrizeIndex, setWonPrizeIndex] = useState<number | null>(null);
-  const rotationRef = useRef(rotation);
+  const [showSpinPointer, setShowSpinPointer] = useState(false);
+  const [showCollectPointer, setShowCollectPointer] = useState(false);
+  const hasCollectedRef = useRef(false);
+  const hasSpunRef = useRef(false);
+ const rotationRef = useRef(rotation);
 
   useEffect(() => {
     rotationRef.current = rotation;
   }, [rotation]);
+
+  
+  useEffect(() => {
+    if (!hasSpunRef.current) {
+      const timer = setTimeout(() => {
+        setShowSpinPointer(true);
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (showCollect && !hasCollectedRef.current) {
+      const timer = setTimeout(() => {
+        setShowCollectPointer(true);
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [showCollect]);
 
   useEffect(() => {
     if (isWheelStopped) return;
@@ -60,6 +85,10 @@ export function WheelWidget2({ setShowImageOverlay }: { setShowImageOverlay: (va
 
   const spinWheel = () => {
     if (isSpinning) return;
+
+    hasSpunRef.current = true;
+
+    setShowSpinPointer(false);
 
     setIsSpinning(true);
     setShowCollect(false);
@@ -78,7 +107,7 @@ export function WheelWidget2({ setShowImageOverlay }: { setShowImageOverlay: (va
 
       const normalizedRotation = newRotation % 360;
       const segmentSize = 360 / prizes.length;
-      const topPrizeIndex = Math.floor(((normalizedRotation + 18) % 360) / segmentSize);
+      const topPrizeIndex = Math.floor(((normalizedRotation + 15) % 360) / segmentSize);
       const actualIndex = (prizes.length - topPrizeIndex) % prizes.length;
 
       setWonPrizeIndex(actualIndex);
@@ -87,6 +116,7 @@ export function WheelWidget2({ setShowImageOverlay }: { setShowImageOverlay: (va
   };
 
   const collectPrize = () => {
+    setShowCollectPointer(false);
     setIsWheelStopped(false);
     setShowCollect(false);
     setWonPrizeIndex(null);
@@ -99,7 +129,7 @@ export function WheelWidget2({ setShowImageOverlay }: { setShowImageOverlay: (va
       <SparklesBackground />
       <motion.div
         className="wheel"
-        style={{ backgroundImage: 'url(/images/wheel2.png)', rotate: rotation }}
+        style={{ backgroundImage: 'url(/images/wheel2.webp)', rotate: rotation }}
         animate={{ rotate: rotation }}
         transition={{ duration: isSpinning ? 3 : 0 }}
       >
@@ -112,7 +142,7 @@ export function WheelWidget2({ setShowImageOverlay }: { setShowImageOverlay: (va
             }}
           >
             <img
-              src={`/images/prize-${index + 1}.png`}
+              src={`/images/prize-${index + 1}.webp`}
               alt={`Prize ${index + 1}`}
               className="prize-icon"
             />
@@ -121,12 +151,21 @@ export function WheelWidget2({ setShowImageOverlay }: { setShowImageOverlay: (va
       </motion.div>
 
       {!showCollect && (
+        <>
         <img
-          src="/images/spin-button.png"
+          src="/images/spin-button.webp"
           alt="Spin"
           className={`control-button spin ${isSpinning ? 'disabled' : ''}`}
           onClick={spinWheel}
         />
+        {showSpinPointer && !isSpinning && (
+          <img
+            src="/images/finger.svg"
+            alt="Click here"
+            className="pointer-guide"
+          />
+        )}
+        </>
       )}
 
       {showCollect && (
@@ -134,7 +173,7 @@ export function WheelWidget2({ setShowImageOverlay }: { setShowImageOverlay: (va
           <div className="overlay" />
           <div className="collect-container">
             <img
-              src="/images/collect-button.png"
+              src="/images/collect-button.webp"
               alt="Collect"
               className="control-button collect"
               onClick={collectPrize}
@@ -142,10 +181,20 @@ export function WheelWidget2({ setShowImageOverlay }: { setShowImageOverlay: (va
             {wonPrizeIndex !== null && (
               <div className="won-prize">
                 <img
-                  src={`/images/prize-${wonPrizeIndex + 1}.png`}
+                  src={`/images/prize-${wonPrizeIndex + 1}.webp`}
                   alt={`Won Prize ${wonPrizeIndex + 1}`}
                   className="won-prize-icon"
                 />
+              </div>
+            )}
+                 {showCollectPointer && (
+                              <div className="collect-pointer">
+
+              <img
+              src="/images/finger.svg"
+                alt="Click here"
+                className="collect-pointer-guide"
+              />
               </div>
             )}
           </div>

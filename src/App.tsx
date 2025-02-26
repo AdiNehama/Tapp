@@ -1,9 +1,9 @@
 import  { useRef } from 'react';
 import { WidgetSlider } from '../src/components/widgetSlider/widgetSlider';
-import { ArrowRight, Sparkles, RefreshCcw, Zap, BarChart3, CheckCircle2, Gamepad2, Rocket } from 'lucide-react';
-import './App.css';
+import { ArrowRight, Sparkles, RefreshCcw, Zap, BarChart3, Gamepad2, Rocket, TrendingUp, Layers } from 'lucide-react';import './App.css';
 import Footer from "../src/components/Footer/footer";
-
+import {AnimatedSection} from "./components/animate"
+import PathTrail from "../src/components/pathTrail/pathTrail"
 function App() {
   const footerRef = useRef<HTMLDivElement>(null);
   
@@ -15,70 +15,82 @@ function App() {
 
   return (
     <div className="app">
+            <PathTrail />
+
       {/* Hero Section */}
+      <AnimatedSection>
+
       <header className="hero">
         <div className="container">
           <nav className="nav">
-            <div className="logo">Tapp</div>
+          <div className="logo">
+  <img src="/images/tapplogo.png" alt="Tapp Logo" />
+</div>
             <button className="cta-button" onClick={scrollToFooter}>Request a Demo</button>
           </nav>
           <div className="hero-grid">
             <div className="hero-content">
-              <h1>Transform Your Mobile Game with Interactive Home Screen Widgets!</h1>
-              <p>
-                Keep players engaged beyond the app and drive them back into the game with powerful widgets.
-              </p>
-             
+              <h3>Bring Your Game to the Home Screen. Always Visible. Always Played.</h3>
+              <p>Keep players engaged beyond the app and drive them back into the game with powerful widgets. </p>
+{/*              
               <button className="hero-cta" onClick={scrollToFooter}>
                 Get Your Own Widget Today <ArrowRight size={20} />
-              </button>
+              </button> */}
             </div>
           </div>
         </div>
       </header>
+      </AnimatedSection>
 
       {/* Widget Showcase Section */}
+      <AnimatedSection>
+
       <section className="widget-showcase">
         <div className="container">
           <h2 className="section-title">Our Widget Gallery</h2>
-          <p className="section-description">Experience our interactive widgets in action</p>
+          <p className="section-description">Explore real use cases from top studios and see how our widgets drive retention, increase sessions, and keep players coming back.</p>
+          
+          <div className="showcase-content">
           <div className="feature-list">
-            <div className="feature-item">
-              <CheckCircle2 size={20} className="feature-icon" />
-              <span>Fully Interactive Demo – See widgets in action directly on the landing page</span>
+              <div className="feature-item">
+                <h3><TrendingUp size={22} /> Higher Retention, More Revenue</h3>        
+                <p>Personalized widgets keep players coming back daily—boosting sessions, reducing churn, and increasing lifetime value effortlessly.</p>
+              </div>
+              <div className="feature-item">
+                <h3><Layers size={22} /> Seamless Integration</h3>          
+                <p>Our plug-and-play SDK integrates in minutes, and the no-code web platform gives you full control—so you can launch and manage campaigns without a developer.</p>   
+              </div>
             </div>
-            <div className="feature-item">
-              <CheckCircle2 size={20} className="feature-icon" />
-              <span>Try It Yourself – Click on the widgets to experience how they work</span>
-            </div>
-            <div className="feature-item">
-              <CheckCircle2 size={20} className="feature-icon" />
-              <span>Compatible with All Mobile Games – Designed for Match-3, RPG, Strategy, and more</span>
-            </div>
+            
+            
+            <WidgetSlider />
           </div>
-          <WidgetSlider />
         </div>
       </section>
+      </AnimatedSection>
+
 
       {/* How It Works Section */}
+      <AnimatedSection>
+
       <section className="how-it-works">
         <div className="container">
           <h2 className="section-title">How It Works?</h2>
           <div className="steps-grid">
             <div className="step-card">
               <Gamepad2 className="step-icon" />
-              <h3>Step 1: Tell us about your game</h3>
-              <p>We analyze your game mechanics and engagement loops to find the best widget opportunities.</p>
+              <h3>Talk to Us & Define Your Use Case              </h3>
+              <p>Share your game’s needs, and we’ll tailor the perfect widget strategy for you.</p>
             </div>
             <div className="step-card">
               <Sparkles className="step-icon" />
-              <h3>Step 2: We design and build a custom widget</h3>
-              <p>Choose from pre-designed widgets or let us create one tailored to your game.</p>
+              <h3>Get a Ready-to-Use SDK</h3>
+              <p>We provide a fully developed SDK with your use case built-in—plug & play integration in minutes.</p>
             </div>
             <div className="step-card">
               <Rocket className="step-icon" />
-              <h3>Step 3: Launch and boost retention</h3>
-              <p>Your widget is ready to engage players and bring them back to your game seamlessly.</p>
+              <h3>Manage Everything Remotely</h3>
+              <p>Control your widgets through our no-code web platform—adjust campaigns anytime without developer effort.</p>
             </div>
                
             <button className="request-button" onClick={scrollToFooter}>
@@ -87,8 +99,12 @@ function App() {
           </div>
         </div>
       </section>
+      </AnimatedSection>
+
 
       {/* Benefits Section */}
+      <AnimatedSection>
+
       <section className="benefits">
         <div className="container">
           <h2 className="section-title">Why Tapp?</h2>
@@ -116,6 +132,13 @@ function App() {
           </div>
         </div>
       </section>
+      </AnimatedSection>
+
+
+      {/* Floating CTA Button */}
+      <button className="floating-cta" onClick={scrollToFooter}>
+        <span>Get Your Free Demo </span>
+      </button>
 
       <div ref={footerRef}></div>
       <Footer />

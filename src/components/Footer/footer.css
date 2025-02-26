@@ -1,6 +1,6 @@
 .footer-container {
-    background: linear-gradient(135deg, #fafafa, #e4e4e4);
-    padding: 5rem 0;
+  background: rgba(234, 234, 234, 0.241);
+  padding: 5rem 0;
     position: relative;
     overflow: hidden;
     max-width: 100%;
@@ -14,9 +14,8 @@
     padding: 0 1rem;
     position: relative;
     z-index: 1;
-    background: rgba(255, 255, 255, 0.743);
     backdrop-filter: blur(40px);
-    border-radius: 3rem;
+    border-radius: 3px;
     padding: 4rem 2rem;
     border: 1px solid rgba(255, 255, 255, 0.3);
     box-shadow: 
@@ -33,7 +32,7 @@
   .footer-top-title {
     font-size: 2.5rem;
     font-weight: 700;
-    background: linear-gradient(to right, #1A1A1A,#d61331, #ff742e );
+    background: #ff006e;
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -49,12 +48,12 @@
   }
   
   .contact-form-container {
-    max-width: 800px;
+    max-width: 700px;
     margin: 0 auto;
     background: rgba(215, 214, 214, 0.493);
     backdrop-filter: blur(20px);
     padding: 2.5rem;
-    border-radius: 2rem;
+    border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 
       0 8px 32px rgba(131, 58, 180, 0.1),
@@ -84,13 +83,13 @@
   
   .form-row {
     display: grid;
-    gap: 1.5rem;
+    gap: 1rem;
     grid-template-columns: 1fr;
   }
   
   @media (min-width: 640px) {
     .form-row {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
     }
   }
   
@@ -100,7 +99,7 @@
   
   .form-field input,
   .form-field select {
-    width: 90%;
+    width: 85%;
     padding: 1rem;
     background: rgba(255, 255, 255, 0.648);
     backdrop-filter: blur(10px);
@@ -113,6 +112,9 @@
     box-shadow: 
       0 4px 6px rgba(131, 58, 180, 0.05),
       inset 0 0 8px rgba(131, 58, 180, 0.02);
+    
+      align-items: center;
+
   }
   
   .form-field input:focus,
@@ -130,7 +132,7 @@
   }
   
   .submit-button {
-    background: linear-gradient(to right, #1A1A1A,#d61331, #ff742e );
+    background: linear-gradient(to right, #323232, #FF204E);
     color: white;
     padding: 1rem 2rem;
     border: none;
@@ -226,7 +228,6 @@
     filter: blur(150px);
     opacity: 0.1;
     mix-blend-mode: multiply;
-    pointer-events: none;
     z-index: 0;
   }
   
@@ -278,3 +279,36 @@
       gap: 1rem;
     }
   }
+  .checkbox-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .checkbox-container input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+  }
+  
+  .checkbox-container input:checked {
+    background-color: #ff006e;
+    border-color: #ff006e;
+  }
+  
+  .checkbox-container label {
+    cursor: pointer;
+  }
+  
+  input[type="checkbox"] {
+    pointer-events: auto; 
+    position: relative; 
+    z-index: 1; 
+  }
+  
+  .error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+  }
+  

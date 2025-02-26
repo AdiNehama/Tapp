@@ -1,83 +1,253 @@
 .phone-mockup {
-    position: relative;
-    margin: 0 auto;
-    width: 300px;
-    height: 600px;
-    background-color: black;
-    border-radius: 3rem;
-    border: 14px solid black;
-    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-    z-index: 5; /* לגרום לזה להיות מעל הכל */
+  position: relative;
+  margin: 0 auto;
+  width: 280px;
+  height: 600px;
+  background: #1C1C1C;
+  border-radius: 50px;
+  border: 14px solid #1C1C1C;
+  box-shadow: 
+    0 50px 100px -20px rgba(0, 0, 0, 0.25),
+    0 30px 60px -30px rgba(0, 0, 0, 0.3),
+    inset 0 -2px 6px 0 rgba(255, 255, 255, 0.05);
+  z-index: 100;
+}
 
-  }
-  
-  .phone-notch {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 24px;
-    background-color: black;
-    border-top-left-radius: 1rem;
-    border-top-right-radius: 1rem;
-    z-index: 2; /* לגרום לזה להיות מעל הכל */
+/* Side Buttons */
+.side-buttons {
+  position: absolute;
+  left: -15px;
+  top: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 2;
+}
 
-  }
-  
-  .phone-notch-indicator {
-    
-    position: absolute;
-    top: 6px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 64px;
-    height: 4px;
-    background-color: #2d3748;
-    border-radius: 9999px;
-  }
-  
-  .phone-screen {
-    width: 100%;
-    height: 100%;
-    background: white;
-    border-radius: 1rem;
-    overflow: hidden;
-  }
-  
-  .phone-content {
-    
-    height: 100%;
-    background-image: url('/images/phone-bg.png');
+.volume-up,
+.volume-down {
+  width: 3px;
+  height: 32px;
+  background: #2a2a2a;
+  border-radius: 4px 0 0 4px;
+  box-shadow: 
+    inset -1px 0 2px rgba(255, 255, 255, 0.1),
+    -1px 0 1px rgba(0, 0, 0, 0.5);
+}
 
-  }
-  
-  .widget-container {
-    position: absolute;
-    top: 55px; /* כמה רחוק מהחלק העליון */
-    left: 10px; /* כמה רחוק מהצד השמאלי */
-    transform: scale(0.6); /* מקטין את כל הווידג'ט */
-    transform-origin: top left; 
-  }
-  
-  .image-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* רקע כהה */
-    justify-content: center;
-    align-items: center;
-    z-index: 1; 
+.silent-switch {
+  width: 3px;
+  height: 20px;
+  background: #2a2a2a;
+  border-radius: 4px 0 0 4px;
+  margin-top: -10px;
+  box-shadow: 
+    inset -1px 0 2px rgba(255, 255, 255, 0.1),
+    -1px 0 1px rgba(0, 0, 0, 0.5);
+}
+
+.power-button {
+  position: absolute;
+  right: -15px;
+  top: 180px;
+  width: 3px;
+  height: 42px;
+  background: #2a2a2a;
+  border-radius: 0 4px 4px 0;
+  z-index: 2;
+  box-shadow: 
+    inset 1px 0 2px rgba(255, 255, 255, 0.1),
+    1px 0 1px rgba(0, 0, 0, 0.5);
+}
+
+/* Dynamic Island */
+.dynamic-island {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 110px;
+  height: 31px;
+  background: #000;
+  border-radius: 20px;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dynamic-island-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dynamic-island-camera {
+  width: 12px;
+  height: 12px;
+  background: #1C1C1C;
+  border-radius: 50%;
+  border: 2px solid #2a2a2a;
+}
+
+.dynamic-island-sensor {
+  width: 8px;
+  height: 8px;
+  background: #1C1C1C;
+  border-radius: 50%;
+  border: 2px solid #2a2a2a;
+}
+
+/* Screen */
+.phone-screen {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  border-radius: 40px;
+  overflow: hidden;
+  position: relative;
+}
+
+.phone-content {
+  height: 100%;
+  background: linear-gradient(135deg, #c2b8b8, #ececec);
+  padding: 60px 16px 16px;
+  position: relative;
+
+}
+
+/* Home Bar */
+.home-bar {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 5px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 100px;
+  z-index: 200;
+  bottom: 90px;
+
+}
+
+/* Status Bar */
+.status-bar {
+  position: absolute;
+  top: 15px;
+  left: 0;
+  right: 0;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  z-index: 10;
+}
+
+.status-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.signal-bars {
+  display: flex;
+  gap: 1px;
+}
+
+.signal-bars span {
+  width: 3px;
+  height: 8px;
+  background: #d8d8d8;
+  border-radius: 1px;
+}
+
+.wifi-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  transform: rotate(45deg);
+  margin: 0 6px;
+}
+
+.wifi-icon span {
+  width: 3px;
+  height: 3px;
+  background: #fff;
+  border-radius: 1px;
+}
+
+.battery {
+  width: 17px;
+  height: 9px;
+  border-radius: 3px;
+  padding: 1px;
+  position: relative;
+  background-color: #efe8e8b6;
+}
+.battery-num{
+font-size: 9px; 
+ color: #b1b1b1;
+  position: absolute;
+margin-top: -2px;
+margin-left: 3.5px;
+}
+
+.battery::after {
+  content: '';
+  position: absolute;
+  right: -1.5px;
+  top: 4px;
+  width: 2px;
+  height: 3px;
+  background: #efe8e8b6;
+  border-radius: 0 1px 1px 0;
+}
+
+.battery-level {
+  height: 100%;
+  width: 70%;
+  background: #fff;
+  border-radius: 2px;
+}
 
 
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .phone-mockup {
+    width: 280px;
+    height: 580px;
   }
+}
+.widget-container {
+  position: absolute;
+  top: 60px; /* כמה רחוק מהחלק העליון */
+  left: 10px; /* כמה רחוק מהצד השמאלי */
+  transform: scale(0.6); /* מקטין את כל הווידג'ט */
+  transform-origin: top left;
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* רקע כהה */
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+
+  
+}
 
 .overlay-image {
-    border-radius: 35px;
-    z-index: 1; 
+  z-index: 1;
 
-    object-fit: contain;
-  }
-
- 
-  
+  object-fit: contain;
+}

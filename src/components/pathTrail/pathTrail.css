@@ -1,0 +1,25 @@
+.path-trail {
+    position: fixed;
+    left: 2%;
+    top: 1%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 2;
+  }
+  
+  .path-bg {
+    stroke: #e0e0e000;
+    stroke-width: 8;
+  }
+  
+  .path-fill {
+    stroke-width: 3;
+    transition: stroke-dashoffset 0.2s linear;
+  }
+  
+  .progress-indicator {
+    transition: cy 0.2s linear;
+  }
+  

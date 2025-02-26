@@ -5,24 +5,38 @@ import emailjs from "emailjs-com";
 
 const Footer: React.FC = () => {
   const [formData, setFormData] = useState({
-    name:"",
-    companyName: "",
+    name: "",
     email: "",
-    link:"",
-    mobile:"",
-    gameName: "",
+    agreeToMailingList: false,
   });
 
+  const [error, setError] = useState("");
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
+    const { name, type } = e.target;
+    const value = type === "checkbox" ? (e.target as HTMLInputElement).checked : e.target.value;
+  
+
+      console.log(`Changed: ${name} => ${value}`); // 🔍 בדיקת לוג
+    
+   
+    
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
   };
+  
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (!formData.agreeToMailingList) {
+      setError("You must agree to join the mailing list.");
+      return;
+    }
+
+    setError("");
 
     emailjs
       .send(
@@ -35,12 +49,9 @@ const Footer: React.FC = () => {
         () => {
           alert("Your demo request was sent successfully!");
           setFormData({
-            name:"",
-            companyName: "",
+            name: "",
             email: "",
-            link:"",
-            mobile:"",
-            gameName: "",
+            agreeToMailingList: false,
           });
         },
         (error) => {
@@ -62,7 +73,7 @@ const Footer: React.FC = () => {
         <div className="contact-form-container">
           <form className="contact-form" onSubmit={handleSubmit}>
             <div className="form-row">
-            <div className="form-field">
+              <div className="form-field">
                 <input
                   type="text"
                   name="name"
@@ -74,65 +85,30 @@ const Footer: React.FC = () => {
               </div>
               <div className="form-field">
                 <input
-                  type="text"
-                  name="companyName"
-                  placeholder="Company Name"
-                  value={formData.companyName}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-
-              <div className="form-field">
-                <input
                   type="email"
                   name="email"
-                  placeholder="Email"
+                  placeholder="Business Email"
                   value={formData.email}
                   onChange={handleChange}
                   required
                 />
-              </div> 
-              
-              <div className="form-field">
-                <input
-                  type="text"
-                  name="link"
-                  placeholder="Website Link"
-                  value={formData.link}
-                  onChange={handleChange}
-                  required
-                />
-
-              </div> 
-              <div className="form-field">
-                <input
-                  type="text"
-                  name="gameName"
-                  placeholder="Game Name"
-                  value={formData.gameName}
-                  onChange={handleChange}
-                  required
-                />
-              </div> 
-                
-              <div className="form-field">
-                <input
-                  type="text"
-                  name="mobile"
-                  placeholder="Ios/Android/Both"
-                  value={formData.mobile}
-                  onChange={handleChange}
-                  required
-                />
-              </div> 
-            
-
+              </div>
             </div>
+            <div className="checkbox-container">
+  <input
+    type="checkbox"
+    name="agreeToMailingList"
+    checked={formData.agreeToMailingList}
+    onChange={handleChange}
+    required
+  />
+  <label htmlFor="termsAccepted">Sign me up for updates – I’d like to receive the latest news and features first.</label>
+</div>
 
-         
+            {error && <p className="error-message">{error}</p>}
             <button type="submit" className="submit-button">
-            Send a request, and we'll get back to you!</button>
+              Send a request, and we'll get back to you!
+            </button>
           </form>
         </div>
 

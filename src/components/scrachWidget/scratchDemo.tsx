@@ -46,59 +46,66 @@ export function ScratchCard({ setShowImageOverlay }: { setShowImageOverlay: (val
   const [showCollect, setShowCollect] = useState(false);
   const overlayRef = useRef<HTMLCanvasElement>(null);
   const scratchPercentage = useRef(0);
-  const isScratching = useRef(false);
   const lastPoint = useRef<Point | null>(null);
   const hasInitialized = useRef(false);
+  const animationFrameRef = useRef<number | null>(null);
+  const isAutoScratchingRef = useRef(false);
+  
 
   const prizeImages = [
-    '/images/prize-1.png',
-    '/images/prize-2.png',
-    '/images/prize-3.png',
-    '/images/prize-4.png',
-    '/images/prize-5.png',
-    '/images/prize-6.png',
-    '/images/prize-7.png',
-    '/images/prize-8.png',
-    '/images/prize-9.png',
-    '/images/prize-10.png',
-    '/images/prize-11.png',
-    '/images/prize-12.png'
+    '/images/prize-1.webp',
+    '/images/prize-2.webp',
+    '/images/prize-3.webp',
+    '/images/prize-4.webp',
+    '/images/prize-5.webp',
+    '/images/prize-6.webp',
+    '/images/prize-7.webp',
+    '/images/prize-8.webp',
+    '/images/prize-9.webp',
+    '/images/prize-10.webp',
+    '/images/prize-11.webp',
+    '/images/prize-12.webp'
   ];
 
   const randomPrizeImage = useRef(prizeImages[Math.floor(Math.random() * prizeImages.length)]);
 
-  const getPosition = (event: React.TouchEvent | React.MouseEvent): Point => {
-    const rect = overlayRef.current?.getBoundingClientRect();
-    if (!rect) return { x: 0, y: 0 };
-
-    const clientX = 'touches' in event ? event.touches[0].clientX : event.clientX;
-    const clientY = 'touches' in event ? event.touches[0].clientY : event.clientY;
-
-    return {
-      x: clientX - rect.left,
-      y: clientY - rect.top
-    };
-  };
-
   useEffect(() => {
-    if (!overlayRef.current || hasInitialized.current) return;
+    const initializeCanvas = () => {
+      if (!overlayRef.current || hasInitialized.current) return;
 
-    const canvas = overlayRef.current;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
+      const canvas = overlayRef.current;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
 
-    // Set canvas size
-    const rect = canvas.getBoundingClientRect();
-    canvas.width = rect.width;
-    canvas.height = rect.height;
-    
-    // Load and draw the scratch overlay image
-    const scratchImage = new Image();
-    scratchImage.src = '/images/scratch-image.png';
-    scratchImage.onload = () => {
-      ctx.drawImage(scratchImage, 0, 0, canvas.width, canvas.height);
-      hasInitialized.current = true;
+      // Set canvas size based on parent element
+      const parent = canvas.parentElement;
+      if (parent) {
+        canvas.width = parent.clientWidth;
+        canvas.height = parent.clientHeight;
+      }
+
+      // Load and draw the scratch overlay image
+      const scratchImage = new Image();
+      scratchImage.src = '/images/scratch-image.webp';
+      scratchImage.onload = () => {
+        if (ctx && canvas) {
+          ctx.drawImage(scratchImage, 0, 0, canvas.width, canvas.height);
+          hasInitialized.current = true;
+        }
+      };
     };
+
+    // Initialize canvas when component mounts
+    initializeCanvas();
+
+    // Re-initialize on window resize
+    const handleResize = () => {
+      hasInitialized.current = false;
+      initializeCanvas();
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   const scratch = (point: Point) => {
@@ -136,28 +143,12 @@ export function ScratchCard({ setShowImageOverlay }: { setShowImageOverlay: (val
     if (scratchPercentage.current > 80 && !isScratched) {
       setIsScratched(true);
       setShowCollect(true);
+      if (animationFrameRef.current !== null) {
+        cancelAnimationFrame(animationFrameRef.current);
+        animationFrameRef.current = null;
+      }
+      isAutoScratchingRef.current = false;
     }
-  };
-
-  const handleStart = (event: React.TouchEvent | React.MouseEvent) => {
-    event.preventDefault();
-    isScratching.current = true;
-    setHasStartedScratching(true);
-    const point = getPosition(event);
-    lastPoint.current = point;
-    scratch(point);
-  };
-
-  const handleMove = (event: React.TouchEvent | React.MouseEvent) => {
-    event.preventDefault();
-    if (!isScratching.current) return;
-    const point = getPosition(event);
-    scratch(point);
-  };
-
-  const handleEnd = () => {
-    isScratching.current = false;
-    lastPoint.current = null;
   };
 
   const collectPrize = () => {
@@ -166,37 +157,114 @@ export function ScratchCard({ setShowImageOverlay }: { setShowImageOverlay: (val
     setShowImageOverlay(true);
   };
 
+  const startAutoScratch = () => {
+    if (!overlayRef.current || isRevealed || isAutoScratchingRef.current) return;
+    
+    isAutoScratchingRef.current = true;
+    setHasStartedScratching(true);
+    
+    const canvas = overlayRef.current;
+    const canvasWidth = canvas.width;
+    const canvasHeight = canvas.height;
+    
+    // מרכז הקנבס
+    const centerX = canvasWidth / 2;
+    const centerY = canvasHeight / 2;
+    
+    const pathPoints: Point[] = [];
+    const zigzagWidth = canvasWidth * 0.8;
+    const zigzagHeight = canvasHeight * 0.8;
+    const steps = 100;
+    
+    // יצירת הנקודות בצורה ממורכזת
+    for (let i = 0; i < steps; i++) {
+      const progress = i / steps;
+      const xOffset = (Math.random() * 0.5 - 0.25) * zigzagWidth;
+      const yOffset = (Math.random() * 0.5 - 0.25) * zigzagHeight;
+      
+      // נוסיף זוויות וסטיות אקראיות כדי לשמור על אפקט ה"זיגזג"
+      const x = centerX + Math.sin(progress * Math.PI ) * zigzagWidth * 0.4 + xOffset;
+      const y = centerY + (progress) * zigzagHeight + yOffset;
+      
+      pathPoints.push({ x, y });
+    }
+    
+    lastPoint.current = pathPoints[0];
+    let currentPointIndex = 0;
+    
+    const scratchNextPoint = () => {
+      if (!isAutoScratchingRef.current || currentPointIndex >= pathPoints.length || isRevealed || scratchPercentage.current > 80) {
+        if (scratchPercentage.current > 60 && !isScratched) {
+          setIsScratched(true);
+          setShowCollect(true);
+        }
+        isAutoScratchingRef.current = false;
+        return;
+      }
+      
+      scratch(pathPoints[currentPointIndex]);
+      currentPointIndex++;
+      
+      setTimeout(() => {
+        animationFrameRef.current = requestAnimationFrame(scratchNextPoint);
+      }, 10); // הוספת השהייה קטנה בין כל נקודה לאנימציה חלקה יותר
+    };
+    
+    scratchNextPoint();
+  };
+  
+
+  const handleAutoScratch = () => {
+    if (!hasInitialized.current) {
+      // נחכה עד שהקנבס יאותחל
+      const waitForInit = setInterval(() => {
+        if (hasInitialized.current) {
+          clearInterval(waitForInit);
+          startAutoScratch();
+        }
+      }, 100);
+
+      // ניקוי אחרי 3 שניות אם לא הצלחנו
+      setTimeout(() => clearInterval(waitForInit), 3000);
+    } else {
+      startAutoScratch();
+    }
+  };
+
+  useEffect(() => {
+    return () => {
+      if (animationFrameRef.current !== null) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+      isAutoScratchingRef.current = false;
+    };
+  }, []);
+
   return (
     <div className="scratch-card">
       <div className="scratch-background" />
       <SparklesBackground/>
       
-      {/* The prize content is always there but only visible after scratching */}
       <div className="scratch-content">
         <span className="prize-amount">
           <img src={randomPrizeImage.current} alt="Prize" />
         </span>
       </div>
 
-      {/* This is the scratch overlay - it stays until collection */}
       {!isRevealed && (
         <canvas
           ref={overlayRef}
           className="scratch-overlay"
-          onMouseDown={handleStart}
-          onMouseMove={handleMove}
-          onMouseUp={handleEnd}
-          onMouseLeave={handleEnd}
-          onTouchStart={handleStart}
-          onTouchMove={handleMove}
-          onTouchEnd={handleEnd}
         />
       )}
 
-      {/* Initial scratch instruction that disappears once scratching starts */}
       {!hasStartedScratching && !isScratched && !isRevealed && (
-        <div className="scratch-text">
-          <img src="/images/scratch-button.png" alt="Scratch here" />
+        <div 
+          className="scratch-text" 
+          onClick={handleAutoScratch}
+          style={{ cursor: 'pointer' }}
+        >
+          <img src="/images/scratch-button.webp" alt="Scratch here" />
         </div>
       )}
 
@@ -205,7 +273,7 @@ export function ScratchCard({ setShowImageOverlay }: { setShowImageOverlay: (val
           <div className="overlay" />
           <div className="collect-container">
             <img
-              src="/images/collect-button.png"
+              src="/images/collect-button.webp"
               alt="Collect"
               className="control-button collect"
               onClick={collectPrize}
