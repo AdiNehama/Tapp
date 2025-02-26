@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import './WheelDemo.css';
+import './wheelDemo.css';
 
 const prizes = Array.from({ length: 12 });
 
