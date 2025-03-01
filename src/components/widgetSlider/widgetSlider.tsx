@@ -4,7 +4,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { PhoneMockup } from "../phoneMockup/phone";
 import { WheelDemo } from "../WheelWidget/wheelDemo";
 import { ScratchCard } from "../scrachWidget/scratchDemo";
-import { WheelWidget2 } from "../WheelWIdget2/wheelWidget2";
+// import { WheelWidget2 } from "../WheelWIdget2/wheelWidget2";
 import { WheelWidget3 } from "../WheelWidget3/wheelWidget3";
 
 import "./widgetSlider.css";
@@ -32,19 +32,19 @@ const widgets = [
     }) => <ScratchCard setShowImageOverlay={setShowImageOverlay} />,
     description: "Instant win scratch cards on the home screen",
   },
+  // {
+  //   id: 1,
+  //   name: "Prize Wheel",
+  //   component: ({
+  //     setShowImageOverlay,
+  //   }: {
+  //     showImageOverlay: boolean;
+  //     setShowImageOverlay: (value: boolean) => void;
+  //   }) => <WheelWidget2 setShowImageOverlay={setShowImageOverlay} />,
+  //   description: "Engage users with a daily spin wheel widget",
+  // },
   {
-    id: 1,
-    name: "Prize Wheel",
-    component: ({
-      setShowImageOverlay,
-    }: {
-      showImageOverlay: boolean;
-      setShowImageOverlay: (value: boolean) => void;
-    }) => <WheelWidget2 setShowImageOverlay={setShowImageOverlay} />,
-    description: "Engage users with a daily spin wheel widget",
-  },
-  {
-    id: 1,
+    id: 3,
     name: "Prize Wheel",
     component: ({
       setShowImageOverlay,

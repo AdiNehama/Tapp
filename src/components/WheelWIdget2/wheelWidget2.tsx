@@ -35,6 +35,22 @@ const SparklesBackground = () => {
     </div>
   );
 };
+const preloadImages = () => {
+  const imageUrls = [
+    "/images/background2.webp", 
+
+    '/images/wheel2.webp',
+    '/images/spin-button.webp',
+    '/images/collect-button.webp',
+    '/images/finger.svg',
+    ...Array.from({ length: 12 }).map((_, i) => `/images/prize-${i + 1}.webp`)
+  ];
+  
+  imageUrls.forEach((src) => {
+    const img = new Image();
+    img.src = src;
+  });
+};
 
 export function WheelWidget2({ setShowImageOverlay }: { setShowImageOverlay: (value: boolean) => void }) {
   const [isSpinning, setIsSpinning] = useState(false);
@@ -51,6 +67,11 @@ export function WheelWidget2({ setShowImageOverlay }: { setShowImageOverlay: (va
   useEffect(() => {
     rotationRef.current = rotation;
   }, [rotation]);
+
+
+  useEffect(() => {
+    preloadImages();
+  }, []);
 
   
   useEffect(() => {

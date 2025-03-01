@@ -34,6 +34,22 @@ const SparklesBackground = () => {
   );
 };
 
+const preloadImages = () => {
+  const imageUrls = [
+    "/images/background.webp", 
+'/images/backgroundScratch.webp',
+'/images/scratch-image.webp',
+    '/images/collect-button.webp',
+    '/images/finger.svg',
+    '/images/scratch-button.webp',
+    ...Array.from({ length: 12 }).map((_, i) => `/images/prize-${i + 1}.webp`)
+  ];
+  
+  imageUrls.forEach((src) => {
+    const img = new Image();
+    img.src = src;
+  });
+};
 interface Point {
   x: number;
   y: number;
@@ -44,6 +60,8 @@ export function ScratchCard({ setShowImageOverlay }: { setShowImageOverlay: (val
   const [isRevealed, setIsRevealed] = useState(false);
   const [hasStartedScratching, setHasStartedScratching] = useState(false);
   const [showCollect, setShowCollect] = useState(false);
+  const [showScratchPointer, setShowScratchPointer] = useState(false);
+  const [showCollectPointer, setShowCollectPointer] = useState(false);
   const overlayRef = useRef<HTMLCanvasElement>(null);
   const scratchPercentage = useRef(0);
   const lastPoint = useRef<Point | null>(null);
@@ -51,6 +69,36 @@ export function ScratchCard({ setShowImageOverlay }: { setShowImageOverlay: (val
   const animationFrameRef = useRef<number | null>(null);
   const isAutoScratchingRef = useRef(false);
   
+  
+  useEffect(() => {
+    preloadImages();
+  }, []);
+
+  // Show pointer 3 seconds after scratch button appears
+  useEffect(() => {
+    if (!hasStartedScratching && !isScratched && !isRevealed) {
+      const timer = setTimeout(() => {
+        setShowScratchPointer(true);
+      }, 3000);
+      
+      return () => clearTimeout(timer);
+    } else {
+      setShowScratchPointer(false);
+    }
+  }, [hasStartedScratching, isScratched, isRevealed]);
+
+  // Show pointer 3 seconds after collect button appears
+  useEffect(() => {
+    if (showCollect) {
+      const timer = setTimeout(() => {
+        setShowCollectPointer(true);
+      }, 3000);
+      
+      return () => clearTimeout(timer);
+    } else {
+      setShowCollectPointer(false);
+    }
+  }, [showCollect]);
 
   const prizeImages = [
     '/images/prize-1.webp',
@@ -120,7 +168,7 @@ export function ScratchCard({ setShowImageOverlay }: { setShowImageOverlay: (val
     if (lastPoint.current) {
       ctx.moveTo(lastPoint.current.x, lastPoint.current.y);
       ctx.lineTo(point.x, point.y);
-      ctx.lineWidth = 40;
+      ctx.lineWidth = 50;
       ctx.lineCap = 'round';
       ctx.stroke();
     }
@@ -156,62 +204,87 @@ export function ScratchCard({ setShowImageOverlay }: { setShowImageOverlay: (val
     setShowCollect(false);
     setShowImageOverlay(true);
   };
-
-  const startAutoScratch = () => {
-    if (!overlayRef.current || isRevealed || isAutoScratchingRef.current) return;
-    
-    isAutoScratchingRef.current = true;
-    setHasStartedScratching(true);
-    
-    const canvas = overlayRef.current;
-    const canvasWidth = canvas.width;
-    const canvasHeight = canvas.height;
-    
-    // מרכז הקנבס
+  const generateZigzagPath = (canvasWidth: number, canvasHeight: number): Point[] => {
+    const path: Point[] = [];
+    const zigzagWidth = canvasWidth * 0.4; // רוחב הזיגזג
     const centerX = canvasWidth / 2;
-    const centerY = canvasHeight / 2;
-    
-    const pathPoints: Point[] = [];
-    const zigzagWidth = canvasWidth * 0.8;
-    const zigzagHeight = canvasHeight * 0.8;
-    const steps = 100;
-    
-    // יצירת הנקודות בצורה ממורכזת
-    for (let i = 0; i < steps; i++) {
-      const progress = i / steps;
-      const xOffset = (Math.random() * 0.5 - 0.25) * zigzagWidth;
-      const yOffset = (Math.random() * 0.5 - 0.25) * zigzagHeight;
-      
-      // נוסיף זוויות וסטיות אקראיות כדי לשמור על אפקט ה"זיגזג"
-      const x = centerX + Math.sin(progress * Math.PI ) * zigzagWidth * 0.4 + xOffset;
-      const y = centerY + (progress) * zigzagHeight + yOffset;
-      
-      pathPoints.push({ x, y });
+    const stepY = canvasHeight / 10; // גודל כל קפיצה כלפי מטה
+    const offsetY = canvasHeight * 0.3; // מוריד את המסלול כולו ב-10% מגובה הכרטיס
+    const left = centerX - zigzagWidth / 2;
+    const right = centerX + zigzagWidth / 2;
+    let currentY = offsetY; // מתחילים נמוך יותר
+  
+    while (currentY < canvasHeight) {
+      path.push({ x: left, y: currentY });
+      currentY += stepY;
+      path.push({ x: right, y: currentY });
+      currentY += stepY;
     }
-    
-    lastPoint.current = pathPoints[0];
-    let currentPointIndex = 0;
-    
-    const scratchNextPoint = () => {
-      if (!isAutoScratchingRef.current || currentPointIndex >= pathPoints.length || isRevealed || scratchPercentage.current > 80) {
-        if (scratchPercentage.current > 60 && !isScratched) {
-          setIsScratched(true);
-          setShowCollect(true);
-        }
-        isAutoScratchingRef.current = false;
-        return;
-      }
-      
-      scratch(pathPoints[currentPointIndex]);
-      currentPointIndex++;
-      
-      setTimeout(() => {
-        animationFrameRef.current = requestAnimationFrame(scratchNextPoint);
-      }, 10); // הוספת השהייה קטנה בין כל נקודה לאנימציה חלקה יותר
-    };
-    
-    scratchNextPoint();
+  
+    return path;
   };
+  
+  
+const startAutoScratch = () => {
+  if (!overlayRef.current || isRevealed || isAutoScratchingRef.current) return;
+
+  isAutoScratchingRef.current = true;
+  setHasStartedScratching(true);
+
+  const canvas = overlayRef.current;
+  const pathPoints = generateZigzagPath(canvas.width, canvas.height);
+
+  lastPoint.current = pathPoints[0];
+  let currentPointIndex = 0;
+  const lerp = (start: number, end: number, t: number) => start + (end - start) * t;
+
+  const smoothScratch = (from: Point, to: Point, duration: number) => {
+    const startTime = performance.now();
+  
+    const animate = (time: number) => {
+      const elapsed = time - startTime;
+      const t = Math.min(elapsed / duration, 1); // משתנה בין 0 ל־1
+  
+      const currentX = lerp(from.x, to.x, t);
+      const currentY = lerp(from.y, to.y, t);
+  
+      scratch({ x: currentX, y: currentY });
+  
+      if (t < 1) {
+        animationFrameRef.current = requestAnimationFrame(animate);
+      }
+    };
+  
+    animationFrameRef.current = requestAnimationFrame(animate);
+  };
+  
+  const scratchNextPoint = () => {
+    if (!isAutoScratchingRef.current || currentPointIndex >= pathPoints.length || isRevealed || scratchPercentage.current > 80) {
+      if (scratchPercentage.current > 60 && !isScratched) {
+        setIsScratched(true);
+        setShowCollect(true);
+      }
+      isAutoScratchingRef.current = false;
+      return;
+    }
+  
+    if (currentPointIndex > 0) {
+      smoothScratch(pathPoints[currentPointIndex - 1], pathPoints[currentPointIndex], 200);
+    } else {
+      scratch(pathPoints[currentPointIndex]);
+    }
+  
+    currentPointIndex++;
+  
+    setTimeout(() => {
+      animationFrameRef.current = requestAnimationFrame(scratchNextPoint);
+    }, 200);
+  };
+  
+
+  scratchNextPoint();
+};
+
   
 
   const handleAutoScratch = () => {
@@ -265,6 +338,13 @@ export function ScratchCard({ setShowImageOverlay }: { setShowImageOverlay: (val
           style={{ cursor: 'pointer' }}
         >
           <img src="/images/scratch-button.webp" alt="Scratch here" />
+          {showScratchPointer && (
+            <img 
+              src="/images/finger.svg" 
+              alt="Click here" 
+              className="pointer-guide-scratch"
+            />
+          )}
         </div>
       )}
 
@@ -272,12 +352,15 @@ export function ScratchCard({ setShowImageOverlay }: { setShowImageOverlay: (val
         <>
           <div className="overlay" />
           <div className="collect-container">
-            <img
-              src="/images/collect-button.webp"
-              alt="Collect"
-              className="control-button collect"
-              onClick={collectPrize}
-            />
+            <div className="collect-button-wrapper" style={{ position: 'relative' }}>
+              <img
+                src="/images/collect-button.webp"
+                alt="Collect"
+                className="control-button collect"
+                onClick={collectPrize}
+              />
+          
+            </div>
             <div className="won-prize">
               <img
                 src={randomPrizeImage.current}
@@ -285,6 +368,16 @@ export function ScratchCard({ setShowImageOverlay }: { setShowImageOverlay: (val
                 className="won-prize-icon"
               />
             </div>
+                {showCollectPointer && (
+                                              <div className="collect-pointer">
+
+                <img 
+                  src="/images/finger.svg" 
+                  alt="Click here" 
+                  className="collect-pointer-guide "
+                />
+                </div>
+              )}
           </div>
         </>
       )}

@@ -17,14 +17,17 @@
   }
   
   .slider-container {
+    overflow: hidden;
+
     position: relative;
     width: 400px;
-    height: 600px;
+    height: 700px;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: visible;
   }
+
+  
   
   .slider-slide {
     position: absolute;

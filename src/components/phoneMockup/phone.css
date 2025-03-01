@@ -7,8 +7,8 @@
   border-radius: 50px;
   border: 14px solid #1C1C1C;
   box-shadow: 
-    0 50px 100px -20px rgba(0, 0, 0, 0.25),
-    0 30px 60px -30px rgba(0, 0, 0, 0.3),
+    0 50px 100px -20px rgba(0, 0, 0, 0.096),
+    0 30px 60px -30px rgba(0, 0, 0, 0.108),
     inset 0 -2px 6px 0 rgba(255, 255, 255, 0.05);
   z-index: 100;
 }
@@ -106,13 +106,18 @@
   border-radius: 40px;
   overflow: hidden;
   position: relative;
-}
 
+}
 .phone-content {
   height: 100%;
-  background: linear-gradient(135deg, #c2b8b8, #ececec);
   padding: 60px 16px 16px;
   position: relative;
+  background-image: url('/images/phone-bg.webp'); /* שימי לב שאין רווח אחרי ה־url */
+  background-size: contain; /* גורם לתמונה להישאר בגודלה המקורי ולהתאים למסגרת */
+  background-repeat: no-repeat; /* מונע חזרה על התמונה */
+  background-size: cover;
+background-position: top;
+overflow: hidden; /* מבטיח שהתמונה לא תצא החוצה */
 
 }
 
@@ -226,28 +231,66 @@ margin-left: 3.5px;
 }
 .widget-container {
   position: absolute;
-  top: 60px; /* כמה רחוק מהחלק העליון */
-  left: 10px; /* כמה רחוק מהצד השמאלי */
+  top: 65px; /* כמה רחוק מהחלק העליון */
+  left: 17px; /* כמה רחוק מהצד השמאלי */
   transform: scale(0.6); /* מקטין את כל הווידג'ט */
   transform-origin: top left;
+  display: flex;
+  flex-direction: column; /* ממקם את הילדים (הווידג'ט והלייבל) בעמודה */
+  align-items: center; /* ממקם את הילדים במרכז האופקי */
+  justify-content: center; /* ממקם את הילדים במרכז האנכי */
+  text-align: center; /* יישור הטקסט של הלייבל למרכז */
 }
-
 .image-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* רקע כהה */
+  display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1;
+  overflow: hidden; /* מונע מהתמונה לצאת מהמיכל */
 
-  
 }
 
 .overlay-image {
-  z-index: 1;
 
-  object-fit: contain;
+  
+  object-fit: contain; /* שומר על פרופורציות התמונה */
+}
+
+
+.app-icons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  position: absolute;
+  left: 48%;
+  transform: translateX(-50%);
+  width: 90%;
+  top: 260px;
+}
+
+.app-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+}
+
+.app-icon img {
+  width: 50px; /* adjust the size of the icons */
+  height: 50px;
+}
+.icon-label {
+  font-size: 10px; /* small text size */
+  color: white;
+  text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.394); /* adding slight shadow for a subtle effect */
+  margin-top: 2px; /* space between icon and label */
+}
+
+.widget-label{
+  color: white;
+  text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.394); /* adding slight shadow for a subtle effect */
+
 }

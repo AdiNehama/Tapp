@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import './WheelDemo.css';
+import './wheelDemo.css';
 
 const prizes = Array.from({ length: 12 });
 
@@ -37,6 +37,23 @@ const SparklesBackground = () => {
   );
 };
 
+const preloadImages = () => {
+  const imageUrls = [
+    "/images/background.webp", 
+
+    '/images/wheel.webp',
+    '/images/spin-button.webp',
+    '/images/collect-button.webp',
+    '/images/finger.svg',
+    ...Array.from({ length: 12 }).map((_, i) => `/images/prize-${i + 1}.webp`)
+  ];
+  
+  imageUrls.forEach((src) => {
+    const img = new Image();
+    img.src = src;
+  });
+};
+
 export function WheelDemo({ setShowImageOverlay }: { setShowImageOverlay: (value: boolean) => void }) {
   const [isSpinning, setIsSpinning] = useState(false);
   const [rotation, setRotation] = useState(0);
@@ -52,6 +69,11 @@ export function WheelDemo({ setShowImageOverlay }: { setShowImageOverlay: (value
   useEffect(() => {
     rotationRef.current = rotation;
   }, [rotation]);
+
+  
+    useEffect(() => {
+      preloadImages();
+    }, []);
 
   useEffect(() => {
     if (isWheelStopped) return;

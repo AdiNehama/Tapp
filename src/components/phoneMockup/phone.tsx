@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './phone.css';
 
@@ -7,7 +7,29 @@ interface PhoneMockupProps {
   showImageOverlay?: boolean;
 }
 
+const preloadImages = () => {
+  const imageUrls = [
+    '/images/animals.webp',
+    '/images/phone-bg.webp',
+    '/images/apple-clock.svg',
+    '/images/apple-mail.svg',
+    '/images/apple-phone.svg',
+    '/images/apple-camera.svg',
+    '/images/apple-store.svg',
+  ];
+
+  imageUrls.forEach((src) => {
+    const img = new Image();
+    img.src = src;
+  });
+};
+
 export function PhoneMockup({ children, showImageOverlay }: PhoneMockupProps) {
+
+  useEffect(() => {
+    preloadImages();
+  }, []);
+
   return (
     <div className="phone-mockup">
       {/* Dynamic Island */}
@@ -34,21 +56,46 @@ export function PhoneMockup({ children, showImageOverlay }: PhoneMockupProps) {
               <span className="time">9:41</span>
             </div>
             <div className="status-bar-right">
-              <div className="signal-bars">
-              </div>
-          
+              <div className="signal-bars" />
               <div className="battery">
-<div className="battery-num">87</div>  
+                <div className="battery-num">87</div>
                 <div className="battery-level"></div>
               </div>
             </div>
           </div>
           <div className="widget-container">
             {children}
+            <div className="widget-label">Animals & Coins</div>
+
           </div>
+
+          {/* App Icons */}
+          <div className="app-icons">
+            <div className="app-icon">
+              <img src="/images/apple-phone.svg" alt="Phone" />
+              <div className="icon-label">Phone</div>
+            </div>
+            <div className="app-icon">
+              <img src="/images/apple-mail.svg" alt="Mail" />
+              <div className="icon-label">Mail</div>
+            </div>
+            <div className="app-icon">
+              <img src="/images/apple-clock.svg" alt="Clock" />
+              <div className="icon-label">Clock</div>
+            </div>
+            <div className="app-icon">
+              <img src="/images/apple-store.svg" alt="Store" />
+              <div className="icon-label">App Store</div>
+            </div>
+            <div className="app-icon">
+              <img src="/images/apple-camera.svg" alt="Camera" />
+              <div className="icon-label">Camera</div>
+            </div>
+          </div>
+
           {/* Home Bar */}
           <div className="home-bar" />
-        </div>  {/* Image Overlay */}
+             {/* Image Overlay */}
       <AnimatePresence>
         {showImageOverlay && (
           <motion.div
@@ -59,7 +106,7 @@ export function PhoneMockup({ children, showImageOverlay }: PhoneMockupProps) {
             transition={{ duration: 0.5, ease: 'easeOut' }}
           >
             <motion.img
-              src="/images/animals.svg"
+              src="/images/animals.webp"
               alt="Prize"
               className="overlay-image"
               initial={{ y: 50, opacity: 0 }}
@@ -70,9 +117,10 @@ export function PhoneMockup({ children, showImageOverlay }: PhoneMockupProps) {
           </motion.div>
         )}
       </AnimatePresence>
+    </div>
+        </div>
       </div>
 
-    
-    </div>
+   
   );
 }

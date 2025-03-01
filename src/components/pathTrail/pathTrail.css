@@ -19,6 +19,7 @@
     transition: stroke-dashoffset 0.2s linear;
   }
   
+  
   .progress-indicator {
     transition: cy 0.2s linear;
   }
