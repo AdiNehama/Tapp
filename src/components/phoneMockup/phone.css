@@ -407,7 +407,7 @@
   position: absolute;
   top: 50px;
   left: 13px;
-  transform: scale(0.5);
+  transform: scale(0.4);
   transform-origin: top left;
   display: flex;
   flex-direction: column;
@@ -452,7 +452,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   position: absolute;
-  left: 48%;
+  left: 49%;
   transform: translateX(-50%);
   width: 90%;
   top: 205px;
