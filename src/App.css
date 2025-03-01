@@ -3,7 +3,6 @@
   color: #1e293b;
   max-width: 100%;
   overflow-x: hidden; /* Prevent horizontal scrolling */
-  width: 100vw;
 }
 
 .logo img {
@@ -234,7 +233,6 @@ margin: 0 auto;
 padding: 0 1rem;
 position: relative;
 z-index: 1;
-max-width: 1200px;
 width: 100%;
 box-sizing: border-box;
 }
@@ -247,7 +245,7 @@ position: relative;
 backdrop-filter: blur(10px);
 border-radius: 1rem;
 border: 1px solid rgba(255, 255, 255, 0.2);
-margin-top: -40px;
+margin-top: -35px;
 padding: 1rem;
 width: 100%;
 box-sizing: border-box;
@@ -255,7 +253,9 @@ box-sizing: border-box;
 
 @media (min-width: 768px) {
 .nav {
-  margin-top: -70px;
+  margin-top: -65px;
+  width: 100%;
+
 }
 }
 
