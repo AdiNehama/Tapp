@@ -447,7 +447,7 @@
   left: 49%;
   transform: translateX(-50%);
   width: 90%;
-  top: 192px;
+  top: 189px;
   gap: 2px;
 }
 
@@ -455,6 +455,8 @@
   .app-icons {
     top: 260px;
     gap: 1px;
+    left: 47%;
+
   }
 }
 
