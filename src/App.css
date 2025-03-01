@@ -3,6 +3,8 @@
   color: #1e293b;
   max-width: 100%;
   overflow-x: hidden; /* Prevent horizontal scrolling */
+  width: 100vw;
+
 }
 
 .logo img {
