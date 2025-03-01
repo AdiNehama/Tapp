@@ -1,15 +1,15 @@
 import { useRef, useState, useEffect } from 'react';
-import { WidgetSlider } from '../src/components/widgetSlider/widgetSlider';
+import { WidgetSlider } from './components/widgetSlider/widgetSlider';
 import { Sparkles, Gamepad2, Rocket, TrendingUp, Layers } from 'lucide-react';
 import './App.css';
-import Footer from "../src/components/Footer/footer";
+import Footer from "./components/Footer/footer";
 import { AnimatedSection } from "./components/animate";
-import PathTrail from "../src/components/pathTrail/pathTrail";
+import PathTrail from "./components/pathTrail/pathTrail";
 
 function App() {
   const footerRef = useRef<HTMLDivElement>(null);
   const [showFloatingCTA, setShowFloatingCTA] = useState(false);
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 568);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   const scrollToFooter = () => {
     if (footerRef.current) {
@@ -20,9 +20,13 @@ function App() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      const triggerHeight = 200; // כמה פיקסלים מהחלק העליון לפני שהכפתור יופיע
-
-      if (scrollY > triggerHeight) {
+      const triggerHeight = 200; // Show button after scrolling 200px
+      
+      // Check if footer is in view to hide the button
+      const footerInView = footerRef.current && 
+        footerRef.current.getBoundingClientRect().top <= window.innerHeight;
+      
+      if (scrollY > triggerHeight && !footerInView) {
         setShowFloatingCTA(true);
       } else {
         setShowFloatingCTA(false);
@@ -30,11 +34,14 @@ function App() {
     };
 
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 568);
+      setIsMobile(window.innerWidth <= 768);
     };
 
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("resize", handleResize);
+    
+    // Initial check
+    handleScroll();
     
     return () => {
       window.removeEventListener("scroll", handleScroll);
