@@ -407,7 +407,7 @@
   position: absolute;
   top: 50px;
   left: 13px;
-  transform: scale(0.6);
+  transform: scale(0.5);
   transform-origin: top left;
   display: flex;
   flex-direction: column;
@@ -462,7 +462,7 @@
 @media (min-width: 768px) {
   .app-icons {
     top: 260px;
-    gap: 4px;
+    gap: 1px;
   }
 }
 
