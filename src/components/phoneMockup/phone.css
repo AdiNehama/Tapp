@@ -407,7 +407,7 @@
   position: absolute;
   top: 50px;
   left: 13px;
-  transform: scale(0.5);
+  transform: scale(0.6);
   transform-origin: top left;
   display: flex;
   flex-direction: column;
@@ -455,7 +455,7 @@
   left: 48%;
   transform: translateX(-50%);
   width: 90%;
-  top: 200px;
+  top: 205px;
   gap: 2px;
 }
 
@@ -481,8 +481,8 @@
 }
 
 .app-icon img {
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
 }
 
 @media (min-width: 768px) {
