@@ -434,18 +434,14 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  z-index: 300;
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .overlay-image {
-  width: 80%;
-  max-width: 300px;
   object-fit: contain;
-}
-
-@media (min-width: 768px) {
-  .overlay-image {
-    width: 85%;
-  }
+  max-width: 90%;
+  max-height: 90%;
 }
 
 .app-icons {
