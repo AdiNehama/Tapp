@@ -60,10 +60,21 @@ export function WidgetSlider() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   const [showImageOverlay, setShowImageOverlay] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  // Add resize listener to detect mobile view
+  useState(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  });
 
   const slideVariants = {
     enter: (direction: number) => ({
-      x: direction > 0 ? 1000 : -1000,
+      x: direction > 0 ? (isMobile ? 500 : 1000) : (isMobile ? -500 : -1000),
       opacity: 0,
     }),
     center: {
@@ -73,7 +84,7 @@ export function WidgetSlider() {
     },
     exit: (direction: number) => ({
       zIndex: 0,
-      x: direction < 0 ? 1000 : -1000,
+      x: direction < 0 ? (isMobile ? 500 : 1000) : (isMobile ? -500 : -1000),
       opacity: 0,
     }),
   };
@@ -106,7 +117,7 @@ export function WidgetSlider() {
     <div className="widget-slider">
       <div className="slider-content">
         <button className="nav-button prev" onClick={() => paginate(-1)}>
-          <ChevronLeft size={24} />
+          <ChevronLeft size={isMobile ? 20 : 24} />
         </button>
 
         <div className="slider-container">
@@ -147,7 +158,7 @@ export function WidgetSlider() {
         </div>
 
         <button className="nav-button next" onClick={() => paginate(1)}>
-          <ChevronRight size={24} />
+          <ChevronRight size={isMobile ? 20 : 24} />
         </button>
       </div>
 

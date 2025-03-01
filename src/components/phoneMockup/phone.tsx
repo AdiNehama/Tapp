@@ -16,6 +16,19 @@ const preloadImages = () => {
     '/images/apple-phone.svg',
     '/images/apple-camera.svg',
     '/images/apple-store.svg',
+    '/images/background.webp', 
+    '/images/backgroundScratch.webp',
+    '/images/scratch-image.webp',
+    '/images/collect-button.webp',
+    '/images/finger.svg',
+     '/images/scratch-button.webp',
+    ...Array.from({ length: 12 }).map((_, i) => `/images/prize-${i + 1}.webp`),
+    '/images/background.webp', 
+      '/images/wheel.webp',
+      '/images/spin-button.webp',
+      '/images/background3.webp', 
+      '/images/wheel3.webp',
+      '/images/spin-button3.webp',
   ];
 
   imageUrls.forEach((src) => {
