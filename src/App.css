@@ -115,6 +115,7 @@ to {
 }
 
 .hero-content {
+width: 90%;
 position: relative;
 animation: scaleIn 0.8s ease-out;
 height: -500px;
@@ -307,7 +308,7 @@ box-shadow: 0 6px 20px rgba(131, 58, 180, 0.4);
   position: relative;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 568px) {
   .benefits-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -397,7 +398,7 @@ box-shadow: 0 6px 20px rgba(131, 58, 180, 0.4);
 }
 
 /* Mobile Responsive Styles */
-@media (max-width: 768px) {
+@media (max-width: 568px) {
   .hero-content h3 {
     font-size: 2.5rem;
   }

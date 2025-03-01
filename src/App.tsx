@@ -9,7 +9,7 @@ import PathTrail from "../src/components/pathTrail/pathTrail";
 function App() {
   const footerRef = useRef<HTMLDivElement>(null);
   const [showFloatingCTA, setShowFloatingCTA] = useState(false);
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 568);
 
   const scrollToFooter = () => {
     if (footerRef.current) {
@@ -30,7 +30,7 @@ function App() {
     };
 
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
+      setIsMobile(window.innerWidth <= 568);
     };
 
     window.addEventListener("scroll", handleScroll);
