@@ -66,8 +66,7 @@ const Footer: React.FC = () => {
         <div className="footer-headline">
           <h2 className="footer-top-title">Book a Demo</h2>
           <h3 className="footer-title">
-            Transform your app's engagement with interactive home screen widgets.
-          </h3>
+          Ensure your game is always visible, always played.          </h3>
         </div>
 
         <div className="contact-form-container">
@@ -77,7 +76,7 @@ const Footer: React.FC = () => {
                 <input
                   type="text"
                   name="name"
-                  placeholder="Your Name"
+                  placeholder="Full Name"
                   value={formData.name}
                   onChange={handleChange}
                   required
@@ -87,7 +86,7 @@ const Footer: React.FC = () => {
                 <input
                   type="email"
                   name="email"
-                  placeholder="Business Email"
+                  placeholder="Email"
                   value={formData.email}
                   onChange={handleChange}
                   required
@@ -102,13 +101,12 @@ const Footer: React.FC = () => {
     onChange={handleChange}
     required
   />
-  <label htmlFor="termsAccepted">Sign me up for updates – I’d like to receive the latest news and features first.</label>
+  <label htmlFor="termsAccepted">Sign me up for updates – Be the first to know & get a special surprise gift!</label>
 </div>
 
             {error && <p className="error-message">{error}</p>}
             <button type="submit" className="submit-button">
-              Send a request, and we'll get back to you!
-            </button>
+            Book a Demo            </button>
           </form>
         </div>
 

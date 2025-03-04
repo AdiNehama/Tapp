@@ -1,4 +1,4 @@
-import { ReactNode, useEffect } from 'react';
+import { ReactNode } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './phone.css';
 
@@ -7,41 +7,8 @@ interface PhoneMockupProps {
   showImageOverlay?: boolean;
 }
 
-const preloadImages = () => {
-  const imageUrls = [
-    '/images/animals.webp',
-    '/images/phone-bg.webp',
-    '/images/apple-clock.svg',
-    '/images/apple-mail.svg',
-    '/images/apple-phone.svg',
-    '/images/apple-camera.svg',
-    '/images/apple-store.svg',
-    '/images/background.webp', 
-    '/images/backgroundScratch.webp',
-    '/images/scratch-image.webp',
-    '/images/collect-button.webp',
-    '/images/finger.svg',
-     '/images/scratch-button.webp',
-    ...Array.from({ length: 12 }).map((_, i) => `/images/prize-${i + 1}.webp`),
-    '/images/background.webp', 
-      '/images/wheel.webp',
-      '/images/spin-button.webp',
-      '/images/background3.webp', 
-      '/images/wheel3.webp',
-      '/images/spin-button3.webp',
-  ];
-
-  imageUrls.forEach((src) => {
-    const img = new Image();
-    img.src = src;
-  });
-};
 
 export function PhoneMockup({ children, showImageOverlay }: PhoneMockupProps) {
-
-  useEffect(() => {
-    preloadImages();
-  }, []);
 
   return (
     <div className="phone-mockup">

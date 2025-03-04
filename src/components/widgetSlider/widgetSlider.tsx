@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { PhoneMockup } from "../phoneMockup/phone";
@@ -67,11 +67,24 @@ export function WidgetSlider() {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
     };
+  
+ 
+    
 
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   });
-
+   
+  useEffect(() => {
+    if (showImageOverlay) {
+      const timer = setTimeout(() => {
+        paginate(1);
+        setShowImageOverlay(false); // מאפס את הערך כדי למנוע דילוגים נוספים
+      }, 3000); // 5 שניות
+  
+      return () => clearTimeout(timer); // מבטל את ה-Timer אם הקומפוננטה מתעדכנת לפני הזמן
+    }
+  }, [showImageOverlay]);
   const slideVariants = {
     enter: (direction: number) => ({
       x: direction > 0 ? (isMobile ? 500 : 1000) : (isMobile ? -500 : -1000),

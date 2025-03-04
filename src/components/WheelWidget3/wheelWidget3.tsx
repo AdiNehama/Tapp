@@ -36,22 +36,7 @@ const SparklesBackground = () => {
   );
 };
 
-const preloadImages = () => {
-  const imageUrls = [
-    "/images/background3.webp", 
 
-    '/images/wheel3.webp',
-    '/images/spin-button3.webp',
-    '/images/collect-button.webp',
-    '/images/finger.svg',
-    ...Array.from({ length: 12 }).map((_, i) => `/images/prize-${i + 1}.webp`)
-  ];
-  
-  imageUrls.forEach((src) => {
-    const img = new Image();
-    img.src = src;
-  });
-};
 
 export function WheelWidget3({ setShowImageOverlay }: { setShowImageOverlay: (value: boolean) => void }) {
   const [isSpinning, setIsSpinning] = useState(false);
@@ -69,16 +54,12 @@ export function WheelWidget3({ setShowImageOverlay }: { setShowImageOverlay: (va
     rotationRef.current = rotation;
   }, [rotation]);
 
-  useEffect(() => {
-    preloadImages();
-  }, []);
-
   
   useEffect(() => {
     if (!hasSpunRef.current) {
       const timer = setTimeout(() => {
         setShowSpinPointer(true);
-      }, 3000);
+      }, 2000);
 
       return () => clearTimeout(timer);
     }
@@ -88,7 +69,7 @@ export function WheelWidget3({ setShowImageOverlay }: { setShowImageOverlay: (va
     if (showCollect && !hasCollectedRef.current) {
       const timer = setTimeout(() => {
         setShowCollectPointer(true);
-      }, 3000);
+      }, 2000);
 
       return () => clearTimeout(timer);
     }
@@ -183,11 +164,15 @@ export function WheelWidget3({ setShowImageOverlay }: { setShowImageOverlay: (va
           onClick={spinWheel}
         />
         {showSpinPointer && !isSpinning && (
+          <div className="pointer-container">
+
           <img
             src="/images/finger.svg"
             alt="Click here"
             className="pointer-guide"
           />
+          </div>
+
         )}
         </>
       )}

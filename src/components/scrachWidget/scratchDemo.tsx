@@ -34,22 +34,6 @@ const SparklesBackground = () => {
   );
 };
 
-const preloadImages = () => {
-  const imageUrls = [
-    "/images/background.webp", 
-'/images/backgroundScratch.webp',
-'/images/scratch-image.webp',
-    '/images/collect-button.webp',
-    '/images/finger.svg',
-    '/images/scratch-button.webp',
-    ...Array.from({ length: 12 }).map((_, i) => `/images/prize-${i + 1}.webp`)
-  ];
-  
-  imageUrls.forEach((src) => {
-    const img = new Image();
-    img.src = src;
-  });
-};
 interface Point {
   x: number;
   y: number;
@@ -69,17 +53,12 @@ export function ScratchCard({ setShowImageOverlay }: { setShowImageOverlay: (val
   const animationFrameRef = useRef<number | null>(null);
   const isAutoScratchingRef = useRef(false);
   
-  
-  useEffect(() => {
-    preloadImages();
-  }, []);
-
   // Show pointer 3 seconds after scratch button appears
   useEffect(() => {
     if (!hasStartedScratching && !isScratched && !isRevealed) {
       const timer = setTimeout(() => {
         setShowScratchPointer(true);
-      }, 3000);
+      }, 2000);
       
       return () => clearTimeout(timer);
     } else {
@@ -92,7 +71,7 @@ export function ScratchCard({ setShowImageOverlay }: { setShowImageOverlay: (val
     if (showCollect) {
       const timer = setTimeout(() => {
         setShowCollectPointer(true);
-      }, 3000);
+      }, 2000);
       
       return () => clearTimeout(timer);
     } else {
@@ -206,10 +185,10 @@ export function ScratchCard({ setShowImageOverlay }: { setShowImageOverlay: (val
   };
   const generateZigzagPath = (canvasWidth: number, canvasHeight: number): Point[] => {
     const path: Point[] = [];
-    const zigzagWidth = canvasWidth * 0.4; // רוחב הזיגזג
+    const zigzagWidth = canvasWidth * 0.3; // רוחב הזיגזג
     const centerX = canvasWidth / 2;
     const stepY = canvasHeight / 10; // גודל כל קפיצה כלפי מטה
-    const offsetY = canvasHeight * 0.3; // מוריד את המסלול כולו ב-10% מגובה הכרטיס
+    const offsetY = canvasHeight * 0.3; // מוריד את המסלול כולו ב-30% מגובה הכרטיס
     const left = centerX - zigzagWidth / 2;
     const right = centerX + zigzagWidth / 2;
     let currentY = offsetY; // מתחילים נמוך יותר
@@ -260,7 +239,7 @@ const startAutoScratch = () => {
   
   const scratchNextPoint = () => {
     if (!isAutoScratchingRef.current || currentPointIndex >= pathPoints.length || isRevealed || scratchPercentage.current > 80) {
-      if (scratchPercentage.current > 60 && !isScratched) {
+      if (scratchPercentage.current > 70 && !isScratched) {
         setIsScratched(true);
         setShowCollect(true);
       }
@@ -278,7 +257,7 @@ const startAutoScratch = () => {
   
     setTimeout(() => {
       animationFrameRef.current = requestAnimationFrame(scratchNextPoint);
-    }, 200);
+    }, 230);
   };
   
 
@@ -332,20 +311,25 @@ const startAutoScratch = () => {
       )}
 
       {!hasStartedScratching && !isScratched && !isRevealed && (
+        <div>
         <div 
           className="scratch-text" 
           onClick={handleAutoScratch}
           style={{ cursor: 'pointer' }}
         >
           <img src="/images/scratch-button.webp" alt="Scratch here" />
-          {showScratchPointer && (
-            <img 
-              src="/images/finger.svg" 
-              alt="Click here" 
-              className="pointer-guide-scratch"
-            />
-          )}
+   
         </div>
+               {showScratchPointer && (
+                <div className='pointer-container'>
+                <img 
+                  src="/images/finger.svg" 
+                  alt="Click here" 
+                  className="pointer-guide-scratch"
+                />
+                 </div>
+              )}
+               </div>
       )}
 
       {showCollect && (

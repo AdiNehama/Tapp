@@ -37,23 +37,6 @@ const SparklesBackground = () => {
   );
 };
 
-const preloadImages = () => {
-  const imageUrls = [
-    "/images/background.webp", 
-
-    '/images/wheel.webp',
-    '/images/spin-button.webp',
-    '/images/collect-button.webp',
-    '/images/finger.svg',
-    ...Array.from({ length: 12 }).map((_, i) => `/images/prize-${i + 1}.webp`)
-  ];
-  
-  imageUrls.forEach((src) => {
-    const img = new Image();
-    img.src = src;
-  });
-};
-
 export function WheelDemo({ setShowImageOverlay }: { setShowImageOverlay: (value: boolean) => void }) {
   const [isSpinning, setIsSpinning] = useState(false);
   const [rotation, setRotation] = useState(0);
@@ -71,9 +54,6 @@ export function WheelDemo({ setShowImageOverlay }: { setShowImageOverlay: (value
   }, [rotation]);
 
   
-    useEffect(() => {
-      preloadImages();
-    }, []);
 
   useEffect(() => {
     if (isWheelStopped) return;
@@ -89,7 +69,7 @@ export function WheelDemo({ setShowImageOverlay }: { setShowImageOverlay: (value
     if (!hasSpunRef.current) {
       const timer = setTimeout(() => {
         setShowSpinPointer(true);
-      }, 3000);
+      }, 2000);
 
       return () => clearTimeout(timer);
     }
@@ -99,7 +79,7 @@ export function WheelDemo({ setShowImageOverlay }: { setShowImageOverlay: (value
     if (showCollect && !hasCollectedRef.current) {
       const timer = setTimeout(() => {
         setShowCollectPointer(true);
-      }, 3000);
+      }, 2000);
 
       return () => clearTimeout(timer);
     }
@@ -180,11 +160,14 @@ export function WheelDemo({ setShowImageOverlay }: { setShowImageOverlay: (value
             onClick={spinWheel}
           />
           {showSpinPointer && !isSpinning && (
-            <img
-              src="/images/finger.svg"
-              alt="Click here"
-              className="pointer-guide"
-            />
+       <div className="pointer-container">
+
+       <img
+         src="/images/finger.svg"
+         alt="Click here"
+         className="pointer-guide"
+       />
+       </div>
           )}
         </>
       )}

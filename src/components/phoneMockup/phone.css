@@ -11,7 +11,12 @@
     0 30px 60px -30px rgba(0, 0, 0, 0.108),
     inset 0 -2px 6px 0 rgba(255, 255, 255, 0.05);
   z-index: 100;
+  display: flex;
+  flex-direction: column;
+
+
 }
+
 
 @media (min-width: 768px) {
   .phone-mockup {
@@ -209,7 +214,7 @@
   transform: translateX(-50%);
   width: 90px;
   height: 4px;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(255, 255, 255, 0.6);
   border-radius: 100px;
   z-index: 200;
   bottom: 70px;
@@ -271,9 +276,41 @@
   border-radius: 1px;
 }
 
+.signal-bars span:nth-child(1) {
+  height: 3px;
+}
+
+.signal-bars span:nth-child(2) {
+  height: 4px;
+}
+
+.signal-bars span:nth-child(3) {
+  height: 5px;
+}
+
+.signal-bars span:nth-child(4) {
+  height: 6px;
+}
+
 @media (min-width: 768px) {
   .signal-bars span {
     width: 3px;
+    height: 8px;
+  }
+  
+  .signal-bars span:nth-child(1) {
+    height: 4px;
+  }
+  
+  .signal-bars span:nth-child(2) {
+    height: 5px;
+  }
+  
+  .signal-bars span:nth-child(3) {
+    height: 6px;
+  }
+  
+  .signal-bars span:nth-child(4) {
     height: 8px;
   }
 }
@@ -375,7 +412,7 @@
   position: absolute;
   top: 50px;
   left: 13px;
-  transform: scale(0.5);
+  transform: scale(0.4);
   transform-origin: top left;
   display: flex;
   flex-direction: column;
@@ -400,26 +437,31 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
-}
+  overflow: hidden; 
+  }
 
 .overlay-image {
   object-fit: contain;
+
 }
 
 .app-icons {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   position: absolute;
-  left: 48%;
+  left: 49%;
   transform: translateX(-50%);
   width: 90%;
-  top: 200px;
+  top: 189px;
+  gap: 2px;
 }
 
 @media (min-width: 768px) {
   .app-icons {
     top: 260px;
+    gap: 1px;
+    left: 47%;
+
   }
 }
 
@@ -428,7 +470,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 6px;
+  padding: 2px;
 }
 
 @media (min-width: 768px) {
@@ -438,8 +480,8 @@
 }
 
 .app-icon img {
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
 }
 
 @media (min-width: 768px) {
@@ -450,9 +492,9 @@
 }
 
 .icon-label {
-  font-size: 8px;
+  font-size: 7px;
   color: white;
-  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.394);
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.394);
   margin-top: 1px;
 }
 
@@ -460,17 +502,18 @@
   .icon-label {
     font-size: 10px;
     margin-top: 2px;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.394);
   }
 }
 
 .widget-label {
   color: white;
-  font-size: 10px;
+  font-size: 12px;
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.394);
 }
 
 @media (min-width: 768px) {
   .widget-label {
-    font-size: 12px;
+    font-size: 17px;
   }
 }
