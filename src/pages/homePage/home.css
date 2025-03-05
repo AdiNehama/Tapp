@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Comfortaa-Variable";
-  src: url("src/assets/fonts/Comfortaa-VariableFont_wght.ttf")
+  src: url("/assets/fonts/Comfortaa-VariableFont_wght.ttf")
     format("truetype");
   font-weight: 100 900; /* טווח המשקלים עבור הפונט המשתנה */
   font-style: normal;
@@ -8,35 +8,35 @@
 
 @font-face {
   font-family: "Comfortaa-Bold";
-  src: url("src/assets/fonts/Comfortaa-Bold.ttf") format("truetype");
+  src: url("/assets/fonts/Comfortaa-Bold.ttf") format("truetype");
   font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Comfortaa-Light";
-  src: url("src/assets/fonts/Comfortaa-Light.ttf") format("truetype");
+  src: url("/assets/fonts/Comfortaa-Light.ttf") format("truetype");
   font-weight: 300;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Comfortaa-Medium";
-  src: url("src/assets/fonts/Comfortaa-Medium.ttf") format("truetype");
+  src: url("/assets/fonts/Comfortaa-Medium.ttf") format("truetype");
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Comfortaa-Regular";
-  src: url("src/assets/fonts/Comfortaa-Regular.ttf") format("truetype");
+  src: url("/assets/fonts/Comfortaa-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Comfortaa-SemiBold", sans-serif;
-  src: url("src/assets/fonts/Comfortaa-SemiBold.ttf") format("truetype");
+  src: url("/assets/fonts/Comfortaa-SemiBold.ttf") format("truetype");
   font-weight: 600;
   font-style: normal;
 }
