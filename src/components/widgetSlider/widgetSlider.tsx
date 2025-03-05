@@ -80,7 +80,7 @@ export function WidgetSlider() {
       const timer = setTimeout(() => {
         paginate(1);
         setShowImageOverlay(false); // מאפס את הערך כדי למנוע דילוגים נוספים
-      }, 3000); // 5 שניות
+      }, 3000); // 3 שניות
   
       return () => clearTimeout(timer); // מבטל את ה-Timer אם הקומפוננטה מתעדכנת לפני הזמן
     }

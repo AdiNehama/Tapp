@@ -10,7 +10,6 @@
   .widget-slider {
     gap: 2rem;
     width: 100%;
-
   }
 }
 
@@ -92,6 +91,7 @@
 .widget-info {
   text-align: center;
   max-width: 300px;
+  font-family: "Comfortaa-Variable";
 }
 
 @media (min-width: 768px) {

@@ -12,21 +12,22 @@ const Footer: React.FC = () => {
 
   const [error, setError] = useState("");
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { name, type } = e.target;
-    const value = type === "checkbox" ? (e.target as HTMLInputElement).checked : e.target.value;
-  
+    const value =
+      type === "checkbox"
+        ? (e.target as HTMLInputElement).checked
+        : e.target.value;
 
-      console.log(`Changed: ${name} => ${value}`); // 🔍 בדיקת לוג
-    
-   
-    
+    console.log(`Changed: ${name} => ${value}`); // 🔍 בדיקת לוג
+
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
   };
-  
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -66,7 +67,8 @@ const Footer: React.FC = () => {
         <div className="footer-headline">
           <h2 className="footer-top-title">Book a Demo</h2>
           <h3 className="footer-title">
-          Ensure your game is always visible, always played.          </h3>
+            Ensure your game is always visible, always played.{" "}
+          </h3>
         </div>
 
         <div className="contact-form-container">
@@ -94,19 +96,22 @@ const Footer: React.FC = () => {
               </div>
             </div>
             <div className="checkbox-container">
-  <input
-    type="checkbox"
-    name="agreeToMailingList"
-    checked={formData.agreeToMailingList}
-    onChange={handleChange}
-    required
-  />
-  <label htmlFor="termsAccepted">Sign me up for updates – Be the first to know & get a special surprise gift!</label>
-</div>
+              <input
+                type="checkbox"
+                name="agreeToMailingList"
+                checked={formData.agreeToMailingList}
+                onChange={handleChange}
+                required
+              />
+              <label htmlFor="termsAccepted">
+                I want to receive your newsletter
+              </label>
+            </div>
 
             {error && <p className="error-message">{error}</p>}
             <button type="submit" className="submit-button">
-            Book a Demo            </button>
+              Book a Demo{" "}
+            </button>
           </form>
         </div>
 
