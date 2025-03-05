@@ -19,7 +19,7 @@
   border: 1px solid rgba(255, 255, 255, 0.3);
   box-shadow: 0 8px 32px rgba(131, 58, 180, 0.1),
     inset 0 0 32px rgba(131, 58, 180, 0.05);
-  font-family: "Comfortaa-Variable";
+  font-family: "Comfortaa-Variable" , sans-serif;
 }
 
 .footer-headline {
@@ -110,7 +110,7 @@
     inset 0 0 8px rgba(131, 58, 180, 0.02);
 
   align-items: center;
-  font-family: "Comfortaa-Variable";
+  font-family: "Comfortaa-Variable", sans-serif;
 }
 
 .form-field input:focus,
@@ -195,7 +195,7 @@
   border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 4px 6px rgba(131, 58, 180, 0.1);
   transition: all 0.3s ease;
-  font-family: "Comfortaa-Variable";
+  font-family: "Comfortaa-Variable", sans-serif;
 }
 
 .info-item:hover {
@@ -312,5 +312,5 @@ input[type="checkbox"] {
   color: red;
   font-size: 12px;
   margin-top: 5px;
-  font-family: "Comfortaa-Variable";
+  font-family: "Comfortaa-Variable", sans-serif;
 }
