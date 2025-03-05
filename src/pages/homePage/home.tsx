@@ -13,35 +13,6 @@ import Footer from "../../components/Footer/footer";
 import { AnimatedSection } from "../../components/animate";
 import PathTrail from "../../components/pathTrail/pathTrail";
 
-const preloadImages = () => {
-  const imageUrls = [
-    "/images/backgroundScratch.webp",
-    "/images/scratch-image.webp",
-    "/images/collect-button.webp",
-    "/images/scratch-button.webp",
-    "/images/background.webp",
-    "/images/wheel.webp",
-    "/images/spin-button.webp",
-    "/images/background3.webp",
-    "/images/wheel3.webp",
-    "/images/spin-button3.webp",
-    "/images/collect-button.webp",
-    "/images/finger.svg",
-    "/images/phone-bg.webp",
-    "/images/apple-camera.svg",
-    "/images/apple-store.svg",
-    "/images/apple-phone.svg",
-    "/images/apple-mail.svg",
-    "/images/apple-clock.svg",
-    ...Array.from({ length: 12 }).map((_, i) => `/images/prize-${i + 1}.webp`),
-  ];
-
-  imageUrls.forEach((src) => {
-    const img = new Image();
-    img.src = src;
-  });
-};
-
 function Home() {
   const footerRef = useRef<HTMLDivElement>(null);
   const [showFloatingCTA, setShowFloatingCTA] = useState(false);
@@ -52,9 +23,6 @@ function Home() {
       footerRef.current.scrollIntoView({ behavior: "smooth" });
     }
   };
-  useEffect(() => {
-    preloadImages();
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
