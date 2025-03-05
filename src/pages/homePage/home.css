@@ -45,7 +45,7 @@
   color: #1e293b;
   max-width: 100%;
   overflow-x: unset; /* Prevent horizontal scrolling */
-  width: 98vw;
+  width: 100vw;
   overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
