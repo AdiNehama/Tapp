@@ -9,7 +9,7 @@ import Ecommerce from "../src/components/ecommerce/ecommerce";
 function App() {
   return (
     <Router>
-      <div>
+      <div className="app">
         <ScrollToTop /> {/* הפעלת הפונקציונליות */}
         <main>
           <Routes>
