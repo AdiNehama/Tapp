@@ -5,10 +5,12 @@ import './phone.css';
 interface PhoneMockupProps {
   children: ReactNode;
   showImageOverlay?: boolean;
+  paginate: (newDirection: number) => void;
+
 }
 
 
-export function PhoneMockup({ children, showImageOverlay }: PhoneMockupProps) {
+export function PhoneMockup({ children, showImageOverlay ,paginate }: PhoneMockupProps) {
 
   return (
     <div className="phone-mockup">
@@ -85,15 +87,16 @@ export function PhoneMockup({ children, showImageOverlay }: PhoneMockupProps) {
             exit={{ opacity: 0, scale: 0.5 }}
             transition={{ duration: 0.5, ease: 'easeOut' }}
           >
-            <motion.img
-              src="/images/animals.webp"
-              alt="Prize"
-              className="overlay-image"
-              initial={{ y: 50, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: 50, opacity: 0 }}
-              transition={{ duration: 0.5, ease: 'easeOut' }}
-            />
+       <motion.img
+  src="/images/animals.webp"
+  alt="Prize"
+  className="overlay-image"
+  initial={{ y: 50, opacity: 0 }}
+  animate={{ y: 0, opacity: 1 }}
+  exit={{ y: 50, opacity: 0 }}
+  transition={{ duration: 0.5, ease: 'easeOut' }}
+  onClick={() => paginate(1)} // קריאה לפונקציה מה־prop
+/>
           </motion.div>
         )}
       </AnimatePresence>

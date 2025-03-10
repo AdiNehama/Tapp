@@ -80,7 +80,7 @@ export function WidgetSlider() {
       const timer = setTimeout(() => {
         paginate(1);
         setShowImageOverlay(false); // מאפס את הערך כדי למנוע דילוגים נוספים
-      }, 3000); // 3 שניות
+      }, 2000); // 3 שניות
   
       return () => clearTimeout(timer); // מבטל את ה-Timer אם הקומפוננטה מתעדכנת לפני הזמן
     }
@@ -160,12 +160,15 @@ export function WidgetSlider() {
               }}
               className="slider-slide"
             >
-              <PhoneMockup showImageOverlay={showImageOverlay}>
-                <CurrentWidget
-                  showImageOverlay={showImageOverlay}
-                  setShowImageOverlay={setShowImageOverlay}
-                />
-              </PhoneMockup>
+            <PhoneMockup 
+  showImageOverlay={showImageOverlay} 
+  paginate={paginate} 
+>
+  <CurrentWidget
+    showImageOverlay={showImageOverlay}
+    setShowImageOverlay={setShowImageOverlay}
+  />
+</PhoneMockup>
             </motion.div>
           </AnimatePresence>
         </div>

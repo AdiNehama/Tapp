@@ -40,13 +40,12 @@
   font-style: normal;
 }
 
-.app {
+.home {
   background: linear-gradient(135deg, #fafafa, #fff);
   color: #1e293b;
   max-width: 100%;
-  overflow-x: unset; /* Prevent horizontal scrolling */
-  width: 98vw;
-  overflow-x: hidden; /* Prevent horizontal scrolling */
+  width: 100vw;
+  overflow-x: hidden !important; /* Prevent horizontal scrolling */
 }
 
 .logo img {
@@ -183,7 +182,8 @@
   font-size: 2.5rem;
   font-weight: 700;
   line-height: 1.2;
-  margin-bottom: 1.5rem;
+  margin-bottom: 4.2rem;
+
   letter-spacing: -0.02em;
   color: transparent;
   font-family: "Comfortaa-Bold", sans-serif;
@@ -198,7 +198,9 @@
 
 @media (min-width: 768px) {
   .hero-content h3 {
-    font-size: 4.2rem;
+    margin-top: 7.2rem;
+
+    font-size: 4rem;
   }
 }
 
