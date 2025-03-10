@@ -46,6 +46,9 @@
   max-width: 100%;
   width: 100vw;
   overflow-x: hidden !important; /* Prevent horizontal scrolling */
+  overflow-x: unset; /* Prevent horizontal scrolling */
+  width: 100vw;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 .logo img {
