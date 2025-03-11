@@ -962,25 +962,16 @@
   
 .headline-rotator {
     position: relative;
-    height: 20vh;
+    height: 30vh;
+    width: 100%;
     overflow: hidden;
-    
+    text-align: center;
   }
-  @media (min-width: 768px) {
-    .headline-rotator {
-        position: relative;
-        height: 50vh;
-        overflow: hidden;
-        
-      }
-
-  }
-
   
   .headline {
     position: absolute;
     width: 100%;
-    font-size: 2.5rem;
+    font-size: 1.8rem;
     font-weight: 700;
     line-height: 1.2;
     letter-spacing: -0.02em;
@@ -996,5 +987,73 @@
   .headline.active {
     opacity: 1;
     transform: translateY(0);
+  }
+  
+  /* Tablet */
+  @media (min-width: 768px) {
+    .hero {
+      padding: 3rem 1rem;
+    }
+  
+    .headline-container {
+      padding: 2rem 0;
+    }
+  
+    .rotating-logo, .rotating-logo2 {
+      width: 170px;
+      height: 170px;
+    }
+  
+    .headline-rotator {
+      height: 50vh;
+    }
+  
+    .headline {
+      font-size: 2.5rem;
+    }
+  }
+  
+  /* Desktop */
+  @media (min-width: 1024px) {
+    .hero {
+      padding: 4rem 1rem;
+    }
+  
+    .rotating-logo, .rotating-logo2 {
+      width: 200px;
+      height: 200px;
+    }
+  
+    .headline {
+      font-size: 3.2rem;
+    }
+  }
+  
+  /* Large Desktop */
+  @media (min-width: 1440px) {
+    .rotating-logo, .rotating-logo2 {
+      width: 250px;
+      height: 250px;
+    }
+  
+    .headline {
+      font-size: 4rem;
+    }
+  }
+  
+  /* Handle very small screens */
+  @media (max-width: 480px) {
+    .rotating-logo, .rotating-logo2 {
+      width: 100px;
+      height: 100px;
+    }
+  
+    .headline {
+      font-size: 1.5rem;
+    }
+  
+    .headline-rotator {
+      height: 25vh;
+    }
   }
   
