@@ -147,7 +147,7 @@ export function ScratchCard({ setShowImageOverlay }: { setShowImageOverlay: (val
     if (lastPoint.current) {
       ctx.moveTo(lastPoint.current.x, lastPoint.current.y);
       ctx.lineTo(point.x, point.y);
-      ctx.lineWidth = 50;
+      ctx.lineWidth = 27;
       ctx.lineCap = 'round';
       ctx.stroke();
     }
@@ -187,8 +187,8 @@ export function ScratchCard({ setShowImageOverlay }: { setShowImageOverlay: (val
     const path: Point[] = [];
     const zigzagWidth = canvasWidth * 0.3; // רוחב הזיגזג
     const centerX = canvasWidth / 2;
-    const stepY = canvasHeight / 10; // גודל כל קפיצה כלפי מטה
-    const offsetY = canvasHeight * 0.3; // מוריד את המסלול כולו ב-30% מגובה הכרטיס
+    const stepY = canvasHeight / 17; // גודל כל קפיצה כלפי מטה
+    const offsetY = canvasHeight * 0.2; // מוריד את המסלול כולו ב-20% מגובה הכרטיס
     const left = centerX - zigzagWidth / 2;
     const right = centerX + zigzagWidth / 2;
     let currentY = offsetY; // מתחילים נמוך יותר

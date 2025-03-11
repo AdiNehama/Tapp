@@ -1,27 +1,23 @@
 .footer-container {
-  background: rgba(236, 236, 236, 0.241);
-  padding: 5rem 0;
+  padding: 1rem 1rem;
   position: relative;
   overflow: hidden;
-  max-width: 100%;
 }
 
 .footer-content {
-  max-width: 90%;
-
-  margin: 0 auto;
-  padding: 0 1rem;
-  position: relative;
-  z-index: 1;
-  backdrop-filter: blur(40px);
-  border-radius: 3px;
-  padding: 4rem 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 8px 32px rgba(131, 58, 180, 0.1),
+  padding: 2rem 2rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(27, 27, 27, 0.1),
     inset 0 0 32px rgba(131, 58, 180, 0.05);
-  font-family: "Comfortaa-Variable" , sans-serif;
+  font-family: "Comfortaa-Variable", sans-serif;
+  position: relative; /* מאפשר הצבת הלוגואים על ה-footer */
+  overflow: hidden; 
 }
 
+.footer-content img {
+  pointer-events: none; /* שלא יפריעו ללחיצות */
+  z-index: 0; /* מוודא שהלוגואים לא יעלו אחד על השני */
+}
 .footer-headline {
   text-align: center;
   margin-bottom: 4rem;
@@ -48,14 +44,17 @@
 
 .contact-form-container {
   max-width: 700px;
+  background: #f6f6f66f;
+
   margin: 0 auto;
-  background: rgba(215, 214, 214, 0.493);
-  backdrop-filter: blur(20px);
-  padding: 2.5rem;
+  position: relative;
+  z-index: 1;
+  backdrop-filter: blur(40px);
   border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 32px rgba(131, 58, 180, 0.1),
-    inset 0 0 32px rgba(131, 58, 180, 0.05);
+  padding: 2rem 2rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 5px 8px 32px rgba(27, 27, 27, 0.1), inset 0 0 30px #ff006f11;
+  font-family: "Comfortaa-Variable", sans-serif;
   position: relative;
   overflow: hidden;
 }
@@ -101,7 +100,7 @@
   padding: 1rem;
   background: rgba(255, 255, 255, 0.648);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(223, 223, 223, 0.288);
   border-radius: 10px;
   font-size: 1rem;
   color: #1e293b;
@@ -116,7 +115,7 @@
 .form-field input:focus,
 .form-field select:focus {
   outline: none;
-  border-color: rgba(131, 58, 180, 0.3);
+  border-color: rgba(255, 255, 255, 0.3);
   box-shadow: 0 4px 12px rgba(131, 58, 180, 0.1),
     inset 0 0 12px rgba(131, 58, 180, 0.05);
   transform: translateY(-2px);
@@ -129,10 +128,9 @@
 .submit-button {
   background: linear-gradient(to right, #ab0e52, #ff006e);
   color: white;
-  padding: 1rem 2rem;
+  padding: 1rem 1rem;
   border: none;
   border-radius: 1rem;
-  font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -183,6 +181,7 @@
 }
 
 .info-item {
+  z-index: 1;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -313,4 +312,29 @@ input[type="checkbox"] {
   font-size: 12px;
   margin-top: 5px;
   font-family: "Comfortaa-Variable", sans-serif;
+}
+
+.termsAccepted {
+  width: fit-content;
+}
+
+@media (min-width: 768px) {
+  .termsAccepted {
+    width: fit-content;
+  }
+}
+
+/* מיקום הקונטיינר שיכיל את הלוגואים */
+.logos-container {
+  position: relative;
+  width: 100%;
+  height: 300px; /* התאם את הגובה לפי הצורך */
+  overflow: hidden; /* כדי למנוע גלילה אם הלוגואים יוצאים מהקונטיינר */
+}
+
+/* סגנון לכל לוגו */
+.floating-logo {
+  position: absolute;
+  pointer-events: none; /* נמנע מהלוגואים להיות אינטראקטיביים */
+  transition: opacity 0.5s ease; /* הוספת אנימציה לשקיפות אם רוצים */
 }

@@ -9,38 +9,10 @@ import {
   Plug,
 } from "lucide-react";
 import "../../pages/homePage/home.css";
-import Footer from "../Footer/footer";
+import Footer2 from "../Footer/footer2";
 import { AnimatedSection } from "../animate";
-import PathTrail from "../pathTrail/pathTrail";
 
-const preloadImages = () => {
-  const imageUrls = [
-    "/images/backgroundScratch.webp",
-    "/images/scratch-image.webp",
-    "/images/collect-button.webp",
-    "/images/scratch-button.webp",
-    "/images/background.webp",
-    "/images/wheel.webp",
-    "/images/spin-button.webp",
-    "/images/background3.webp",
-    "/images/wheel3.webp",
-    "/images/spin-button3.webp",
-    "/images/collect-button.webp",
-    "/images/finger.svg",
-    "/images/phone-bg.webp",
-    "/images/apple-camera.svg",
-    "/images/apple-store.svg",
-    "/images/apple-phone.svg",
-    "/images/apple-mail.svg",
-    "/images/apple-clock.svg",
-    ...Array.from({ length: 12 }).map((_, i) => `/images/prize-${i + 1}.webp`),
-  ];
 
-  imageUrls.forEach((src) => {
-    const img = new Image();
-    img.src = src;
-  });
-};
 
 function Ecommerce() {
   const footerRef = useRef<HTMLDivElement>(null);
@@ -52,9 +24,7 @@ function Ecommerce() {
       footerRef.current.scrollIntoView({ behavior: "smooth" });
     }
   };
-  useEffect(() => {
-    preloadImages();
-  }, []);
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -91,7 +61,6 @@ function Ecommerce() {
 
   return (
     <div className="app">
-      <PathTrail />
 
       {/* Hero Section */}
       <AnimatedSection>
@@ -108,10 +77,8 @@ function Ecommerce() {
             <div className="hero-grid">
               <div className="hero-content">
                 <h3>
-                  Bring Your App to the Home Screen.
-                  <br />
-                  Always Visible. Always Engaged.
-                </h3>
+                Bring Your Brand to the Home Screen.                  <br />
+                Always Visible. Always Selling.                </h3>
               </div>
             </div>
           </div>
@@ -224,7 +191,7 @@ function Ecommerce() {
 
       {/* Footer */}
       <div ref={footerRef}></div>
-      <Footer />
+      <Footer2 />
     </div>
   );
 }

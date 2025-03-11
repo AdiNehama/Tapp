@@ -1,22 +1,28 @@
 import { useRef, useState, useEffect } from "react";
 import { WidgetSlider } from "../../components/widgetSlider/widgetSlider";
-
 import {
   MessageCircle,
   Package,
   Sliders,
   TrendingUp,
   Plug,
+  Sparkles
 } from "lucide-react";
 import "./home.css";
 import Footer from "../../components/Footer/footer";
 import { AnimatedSection } from "../../components/animate";
-import PathTrail from "../../components/pathTrail/pathTrail";
 
 function Home() {
   const footerRef = useRef<HTMLDivElement>(null);
   const [showFloatingCTA, setShowFloatingCTA] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [activeHeadline, setActiveHeadline] = useState(0);
+
+  const headlines = [
+    "Bring Your Game to the Home Screen",
+    "Always Visible. Always Played.",
+    "Boost Retention with Live Widgets"
+  ];
 
   const scrollToFooter = () => {
     if (footerRef.current) {
@@ -25,11 +31,14 @@ function Home() {
   };
 
   useEffect(() => {
+    const headlineInterval = setInterval(() => {
+      setActiveHeadline((prev) => (prev + 1) % headlines.length);
+    }, 4000);
+
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      const triggerHeight = 200; // Show button after scrolling 200px
+      const triggerHeight = 200;
 
-      // Check if footer is in view to hide the button
       const footerInView =
         footerRef.current &&
         footerRef.current.getBoundingClientRect().top <= window.innerHeight;
@@ -48,10 +57,10 @@ function Home() {
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("resize", handleResize);
 
-    // Initial check
     handleScroll();
 
     return () => {
+      clearInterval(headlineInterval);
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleResize);
     };
@@ -59,10 +68,7 @@ function Home() {
 
   return (
     <div className="home">
-      <PathTrail />
-
-      {/* Hero Section */}
-      <AnimatedSection>
+      <AnimatedSection variant="fade">
         <header className="hero">
           <div className="container">
             <nav className="nav">
@@ -70,24 +76,40 @@ function Home() {
                 <img src="/images/tapplogo.png" alt="Tapp Logo" />
               </div>
               <button className="cta-button" onClick={scrollToFooter}>
-                Request a demo
+                <span className="cta-text">Request a demo</span>
+                <span className="cta-icon"><Sparkles size={13} /></span>
+
               </button>
             </nav>
             <div className="hero-grid">
               <div className="hero-content">
-                <h3>
-                  Bring Your Game to the Home Screen.
-                  <br />
-                  Always Visible. Always Played.
-                </h3>
+                <div className="headline-container">
+                  <div className="rotating-logo">
+                    <img src="/images/piclogo.svg" alt="Rotating Logo" className={`logo-spin headline-${activeHeadline}`} />
+                    
+                  </div>
+                  <div className="rotating-logo2">
+                    <img src="/images/piclogo.svg" alt="Rotating Logo" className={`logo-spin headline-${activeHeadline}`} />
+                    
+                  </div>
+                  <div className="headline-rotator">
+                    {headlines.map((headline, index) => (
+                      <h3
+                        key={index}
+                        className={`headline ${index === activeHeadline ? 'active' : ''}`}
+                      >
+                        {headline}
+                      </h3>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </header>
       </AnimatedSection>
 
-      {/* Widget Showcase Section */}
-      <AnimatedSection>
+      <AnimatedSection variant="slide">
         <section className="widget-showcase">
           <div className="container">
             <h2 className="section-title">Our Widget Gallery</h2>
@@ -148,8 +170,7 @@ function Home() {
         </section>
       </AnimatedSection>
 
-      {/* Benefits Section */}
-      <AnimatedSection>
+      <AnimatedSection variant="bounce">
         <section className="benefits">
           <div className="container">
             <h2 className="section-title">How It Works</h2>
@@ -183,14 +204,12 @@ function Home() {
         </section>
       </AnimatedSection>
 
-      {/* Floating CTA Button */}
       {showFloatingCTA && (
         <button className="floating-cta" onClick={scrollToFooter}>
           <span>Free demo</span>
         </button>
       )}
 
-      {/* Footer */}
       <div ref={footerRef}></div>
       <Footer />
     </div>

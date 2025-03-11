@@ -249,7 +249,7 @@ const Footer: React.FC = () => {
         <div className="footer-headline">
           <h2 className="footer-top-title">Book a Demo</h2>
           <h3 className="footer-title">
-            Ensure your game is always visible, always played.{" "}
+            Ensure Your Store is Always Seen, Always Selling.
           </h3>
         </div>
 
@@ -285,7 +285,7 @@ const Footer: React.FC = () => {
                 onChange={handleChange}
                 required
               />
-              <label className="termsAccepted">
+              <label htmlFor="termsAccepted">
                 I want to receive your newsletter
               </label>
             </div>
