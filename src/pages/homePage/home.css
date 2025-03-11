@@ -678,6 +678,7 @@
 
   padding: 2rem 1rem;
   position: inherit;
+  z-index: 2;
 }
 
 @media (min-width: 768px) {
@@ -692,6 +693,7 @@
   -webkit-backdrop-filter: blur(30px) saturate(180%);
   border-radius: 1.5rem;
   padding: 1.5rem;
+  z-index: 2;
 }
 
 @media (min-width: 768px) {
@@ -708,6 +710,7 @@
   max-width: 100%;
   overflow: hidden;
   margin-bottom: 2rem;
+  z-index: 2;
 }
 
 @media (min-width: 768px) {
@@ -1056,4 +1059,3 @@
       height: 25vh;
     }
   }
-  
