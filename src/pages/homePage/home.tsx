@@ -19,7 +19,6 @@ function Home() {
   const [activeHeadline, setActiveHeadline] = useState(0);
 
   const headlines = [
-    "Bring Your Game to the Home Screen",
     "Always Visible. Always Played.",
     "Boost Retention with Live Widgets"
   ];
@@ -84,6 +83,8 @@ function Home() {
             <div className="hero-grid">
               <div className="hero-content">
                 <div className="headline-container">
+                <h3 className="h3-static"> Bring Your Game to the Home Screen</h3>
+
                   <div className="rotating-logo">
                     <img src="/images/piclogo.svg" alt="Rotating Logo" className={`logo-spin headline-${activeHeadline}`} />
                     
