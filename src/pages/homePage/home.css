@@ -194,9 +194,10 @@
 }
 
 .h3-static {
-  font-size: 3rem;
   font-weight: 700;
   line-height: 1.2;
+
+  font-size: 2.5rem;
   letter-spacing: -0.02em;
   color: transparent;
   font-family: "Comfortaa-Bold", sans-serif;
@@ -206,14 +207,13 @@
   background-clip: text;
   animation: gradientText 3s infinite;
   background-size: 200% auto;
-  margin-top: -3%;
+
   text-align: center;
 
 }
 
 @media (min-width: 768px) {
   .h3-static {
-    margin-top: -65%;
     text-align: left;
 
     font-size: 3.5rem;
@@ -729,6 +729,11 @@ margin-top: -7%;
   position: inherit;
 }
 
+@media (min-width: 768px) {
+  .widget-showcase {
+    padding: 0.5rem 1rem; 
+  }
+}
 
 .widget-showcase .container {
 
@@ -1032,15 +1037,14 @@ margin-top: -7%;
   
   .headline-container {
     padding: 1rem 0;
-    margin-top: 15%;
+    margin-top: -10%;
   }
 
   
   /* Tablet */
   @media (min-width: 768px) {
   
-  
-  
+
     .headline {
       font-size: 4rem;
     }
@@ -1064,7 +1068,6 @@ margin-top: -7%;
   
   /* Handle very small screens */
   @media (max-width: 480px) {
-
     .headline {
       font-size: 1.5rem;
     }

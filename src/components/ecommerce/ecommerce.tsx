@@ -1,27 +1,24 @@
 import { useRef, useState, useEffect } from "react";
 import { WidgetSlider } from "../../components/widgetSlider/widgetSlider";
 import {
+  ChevronRight,
   MessageCircle,
   Package,
   Sliders,
   TrendingUp,
   Plug,
-  Sparkles,
+  Sparkles
 } from "lucide-react";
 import "../../pages/homePage/home.css";
-import Footer2 from "../../components/Footer/footer2";
+import Footer from "../../components/Footer/footer";
 import { AnimatedSection } from "../../components/animate";
 
-function Ecommerce() {
+function Home() {
   const footerRef = useRef<HTMLDivElement>(null);
   const [showFloatingCTA, setShowFloatingCTA] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-  const [activeHeadline, setActiveHeadline] = useState(0);
 
-  const headlines = [
-    " Always Visible. Always Selling.  ",
-    "Boost Retention with Live Widgets",
-  ];
+  
 
   const scrollToFooter = () => {
     if (footerRef.current) {
@@ -30,9 +27,7 @@ function Ecommerce() {
   };
 
   useEffect(() => {
-    const headlineInterval = setInterval(() => {
-      setActiveHeadline((prev) => (prev + 1) % headlines.length);
-    }, 4000);
+ 
 
     const handleScroll = () => {
       const scrollY = window.scrollY;
@@ -59,7 +54,6 @@ function Ecommerce() {
     handleScroll();
 
     return () => {
-      clearInterval(headlineInterval);
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleResize);
     };
@@ -72,73 +66,71 @@ function Ecommerce() {
           <div className="container">
             <nav className="nav">
               <div className="logo">
-                <img src="/images/tapplogo.png" alt="Tapp Logo" />
+                <img src="/images/tapplogo1.png" alt="Tapp Logo" />
               </div>
               <button className="cta-button" onClick={scrollToFooter}>
                 <span className="cta-text">Request a demo</span>
-                <span className="cta-icon">
-                  <Sparkles size={13} />
-                </span>
+                <span className="cta-icon"><Sparkles size={13} /></span>
+
               </button>
             </nav>
-            <div className="hero-grid">
+            {/* <div className="hero-grid">
               <div className="hero-content">
                 <div className="headline-container">
-                  <h3 className="h3-static">
-                    {" "}
-                    Bring Your Brand to the Home Screen{" "}
-                  </h3>
+                <h3 className="h3-static"> Bring Your Game to the Home Screen <br/> Always Visible. Always Played.</h3>
+             
+=======
+                <h3 className="h3-static"> Bring Your Game to the Home Screen</h3>
 
                   <div className="rotating-logo">
-                    <img
-                      src="/images/piclogo.svg"
-                      alt="Rotating Logo"
-                      className={`logo-spin headline-${activeHeadline}`}
-                    />
+                    <img src="/images/piclogo.svg" alt="Rotating Logo" className={`logo-spin headline-${activeHeadline}`} />
+                    
                   </div>
                   <div className="rotating-logo2">
-                    <img
-                      src="/images/piclogo.svg"
-                      alt="Rotating Logo"
-                      className={`logo-spin headline-${activeHeadline}`}
-                    />
+                    <img src="/images/piclogo.svg" alt="Rotating Logo" className={`logo-spin headline-${activeHeadline}`} />
+                    
                   </div>
                   <div className="headline-rotator">
                     {headlines.map((headline, index) => (
                       <h3
                         key={index}
-                        className={`headline ${
-                          index === activeHeadline ? "active" : ""
-                        }`}
+                        className={`headline ${index === activeHeadline ? 'active' : ''}`}
                       >
                         {headline}
                       </h3>
                     ))}
                   </div>
+>>>>>>> 717b0024acba2d7ea61d162b394a5b7c6beb429a
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </header>
       </AnimatedSection>
 
-      {/* Widget Showcase Section */}
       <AnimatedSection variant="slide">
         <section className="widget-showcase">
           <div className="container">
-            <h2 className="section-title">Our Widget Gallery</h2>
+            {/* <h2 className="section-title">Our Widget Gallery</h2> */}
             <div className="showcase-content">
               {isMobile ? (
                 <>
+                  <div className="headline-container">
+                <h3 className="h3-static"> Bring Your Game to the Home Screen. </h3>
+                <h4 className="h4-static" > Always Visible.<br/>  Always Played.</h4>
+             
+                </div>
                   <WidgetSlider />
-                  <div className="feature-list">
+
+
+                  {/* <div className="feature-list">
                     <div className="feature-item">
                       <h3>
                         <TrendingUp size={22} /> Higher Retention
                       </h3>
                       <p>
-                        Widgets of your brand draw players in, reducing churn
-                        and increasing lifetime value.
+                        Widgets of your game draw players in, reducing churn and
+                        increasing lifetime value.
                       </p>
                     </div>
                     <div className="feature-item">
@@ -151,18 +143,39 @@ function Ecommerce() {
                         campaigns without a developer.
                       </p>
                     </div>
-                  </div>
+                  </div> */}
                 </>
               ) : (
                 <>
-                  <div className="feature-list">
+
+<div className="headline-container">
+                <h3 className="h3-static"> Bring Your Game to the Home Screen.</h3>
+                <h4 className="h4-static" > Always Visible.<br/>  Always Played.</h4>
+<p className="description">our widget gallery  <ChevronRight className="arrow-icon"/>    </p>
+<h3>
+                        <TrendingUp size={22} /> Higher Retention
+                      </h3>
+<p> Widgets of your game draw players in, reducing churn and increasing lifetime value.</p>
+<h3>
+<Plug size={22} /> Seamless Integration
+                      </h3>
+                      <p>
+                        Our plug-and-play SDK integrates in minutes. Our no-code
+                        web platform gives you full control to launch and manage
+                        campaigns without a developer.
+                      </p>
+
+
+                </div>
+                
+                  {/* <div className="feature-list">
                     <div className="feature-item">
                       <h3>
                         <TrendingUp size={22} /> Higher Retention
                       </h3>
                       <p>
-                        Widgets of your brand draw players in, reducing churn
-                        and increasing lifetime value.
+                        Widgets of your game draw players in, reducing churn and
+                        increasing lifetime value.
                       </p>
                     </div>
                     <div className="feature-item">
@@ -175,7 +188,7 @@ function Ecommerce() {
                         campaigns without a developer.
                       </p>
                     </div>
-                  </div>
+                  </div> */}
                   <WidgetSlider />
                 </>
               )}
@@ -184,7 +197,6 @@ function Ecommerce() {
         </section>
       </AnimatedSection>
 
-      {/* Benefits Section */}
       <AnimatedSection variant="bounce">
         <section className="benefits">
           <div className="container">
@@ -196,7 +208,7 @@ function Ecommerce() {
                   Talk to Us & Define Your Use Case
                 </h3>
                 <p className="benefit-description">
-                  Together, we'll select the optimal widgets for your brand
+                  Together, we'll select the optimal widgets for your game
                 </p>
               </div>
               <div className="benefit-card">
@@ -219,18 +231,16 @@ function Ecommerce() {
         </section>
       </AnimatedSection>
 
-      {/* Floating CTA Button */}
       {showFloatingCTA && (
         <button className="floating-cta" onClick={scrollToFooter}>
           <span>Free demo</span>
         </button>
       )}
 
-      {/* Footer */}
       <div ref={footerRef}></div>
-      <Footer2 />
+      <Footer />
     </div>
   );
 }
 
-export default Ecommerce;
+export default Home;

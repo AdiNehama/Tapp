@@ -79,6 +79,28 @@ function Home() {
                 <div className="headline-container">
                 <h3 className="h3-static"> Bring Your Game to the Home Screen <br/> Always Visible. Always Played.</h3>
              
+=======
+                <h3 className="h3-static"> Bring Your Game to the Home Screen</h3>
+
+                  <div className="rotating-logo">
+                    <img src="/images/piclogo.svg" alt="Rotating Logo" className={`logo-spin headline-${activeHeadline}`} />
+                    
+                  </div>
+                  <div className="rotating-logo2">
+                    <img src="/images/piclogo.svg" alt="Rotating Logo" className={`logo-spin headline-${activeHeadline}`} />
+                    
+                  </div>
+                  <div className="headline-rotator">
+                    {headlines.map((headline, index) => (
+                      <h3
+                        key={index}
+                        className={`headline ${index === activeHeadline ? 'active' : ''}`}
+                      >
+                        {headline}
+                      </h3>
+                    ))}
+                  </div>
+>>>>>>> 717b0024acba2d7ea61d162b394a5b7c6beb429a
                 </div>
               </div>
             </div> */}
