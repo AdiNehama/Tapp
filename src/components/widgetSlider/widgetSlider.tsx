@@ -130,7 +130,7 @@ export function WidgetSlider() {
     <div className="widget-slider">
       <div className="slider-content">
         <button className="nav-button prev" onClick={() => paginate(-1)}>
-          <ChevronLeft size={isMobile ? 20 : 24} />
+          <ChevronLeft  className="arror-l" size={isMobile ? 20 : 24} />
         </button>
 
         <div className="slider-container">
@@ -174,7 +174,9 @@ export function WidgetSlider() {
         </div>
 
         <button className="nav-button next" onClick={() => paginate(1)}>
-          <ChevronRight size={isMobile ? 20 : 24} />
+          
+          <ChevronRight  />
+          
         </button>
       </div>
 

@@ -91,7 +91,7 @@
 /* CTA Button Animation */
 .cta-button {
   padding: 0.75rem 2rem;
-  background: linear-gradient(to right, #ab0e52, #ff006e);
+  background: linear-gradient(to right, #5d12d2, #461b8d);
   color: #fff;
   border: none;
   border-radius: 9999px;
@@ -145,8 +145,6 @@
 /* Hero Section */
 .hero {
     
-        padding: 1.5rem 1rem 2rem; /* Reduced padding */
-        min-height: 25vh; /* Reduced height */
   position: relative;
   background: transparent;
   overflow: hidden;
@@ -195,32 +193,82 @@
   }
 }
 
-.hero-content h3 {
-  font-size: 2.5rem;
+.h3-static {
+  font-size: 3rem;
   font-weight: 700;
   line-height: 1.2;
-  margin-bottom: 4.2rem;
-
   letter-spacing: -0.02em;
   color: transparent;
   font-family: "Comfortaa-Bold", sans-serif;
-
   /* אנימציה על הגרדיאנט בלבד */
-  background: linear-gradient(to right, #db166b, #ff006e);
+  background: linear-gradient(to right, #5d12d2, #461b8d);
   -webkit-background-clip: text;
   background-clip: text;
   animation: gradientText 3s infinite;
   background-size: 200% auto;
+  margin-top: -3%;
+  text-align: center;
+
 }
 
 @media (min-width: 768px) {
-  .hero-content h3 {
-    margin-top: 7.2rem;
+  .h3-static {
+    margin-top: -65%;
+    text-align: left;
 
-    font-size: 4rem;
+    font-size: 3.5rem;
   }
 }
 
+.h4-static {
+  font-size: 2.5rem;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: transparent;
+  font-family: "Comfortaa-Bold", sans-serif;
+  /* אנימציה על הגרדיאנט בלבד */
+  background: linear-gradient(to right, #5d12d2, #461b8d);
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: gradientText 3s infinite;
+  background-size: 200% auto;
+  margin-top: -3%;
+  text-align: center;
+
+}
+
+@media (min-width: 768px) {
+  .h4-static {
+    text-align: left;
+    margin-top: -7%;
+    font-size: 3rem;
+  }
+}
+
+.description{
+  font-size: 1.7rem;
+  font-family: "Comfortaa-Bold", sans-serif;
+color: #813af5;
+margin-top: -7%;
+
+}
+
+
+.arrow-icon {
+  color: #813af5 ;
+  animation: bounce 1.5s infinite;
+}
+
+/* אנימציה לקפיצת החץ */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateX(0);
+}
+50% {
+    transform: translateX(10px);
+}
+}
 @keyframes gradientText {
   0% {
     background-position: 200% center;
@@ -243,7 +291,7 @@
 
 .hero-cta {
   padding: 1rem 2.5rem;
-  background: linear-gradient(to right, #ab0e52, #ff006e);
+  background: linear-gradient(to right, #813af5, #5d12d2);
   color: #fff;
   border-radius: 9999px;
   border: none;
@@ -291,6 +339,7 @@
   box-sizing: border-box;
 }
 
+
 .nav {
   display: flex;
   justify-content: space-between;
@@ -299,16 +348,17 @@
   backdrop-filter: blur(10px);
   border-radius: 1rem;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  margin-top: -35px;
   padding: 1rem;
   width: 100%;
   box-sizing: border-box;
+  margin-top: -3%;
+
 }
 
 @media (min-width: 768px) {
   .nav {
-    margin-top: -65px;
     width: 100%;
+    margin-top: -2%;
   }
 }
 
@@ -344,7 +394,7 @@
   font-size: 2rem;
   text-align: center;
   margin-bottom: 3rem;
-  background: linear-gradient(to right, #db166b, #ff006e);
+  background: linear-gradient(to right, #6023c1, #5d12d2);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -370,7 +420,7 @@
   transform: translateX(-50%);
   width: 100px;
   height: 4px;
-  background: linear-gradient(to right, #ab0e52, #ff006e);
+  background: linear-gradient(to right, #6023c1, #5d12d2);
   border-radius: 2px;
 }
 
@@ -455,12 +505,12 @@
 }
 
 .benefit-icon.purple {
-  color: #833ab4;
+  color: #a857df;
   filter: drop-shadow(0 0 10px rgba(131, 58, 180, 0.3));
 }
 
 .benefit-icon.blue {
-  color: #405de6;
+  color: #e6a440;
   filter: drop-shadow(0 0 10px rgba(64, 93, 230, 0.3));
 }
 
@@ -675,16 +725,10 @@
 }
 
 .widget-showcase {
-
-  padding: 2rem 1rem;
+  padding: 0rem 1rem;
   position: inherit;
 }
 
-@media (min-width: 768px) {
-  .widget-showcase {
-    padding: 2.5rem 1rem; 
-  }
-}
 
 .widget-showcase .container {
 
@@ -692,6 +736,7 @@
   -webkit-backdrop-filter: blur(30px) saturate(180%);
   border-radius: 1.5rem;
   padding: 1.5rem;
+  z-index: 2;
 }
 
 @media (min-width: 768px) {
@@ -708,6 +753,7 @@
   max-width: 100%;
   overflow: hidden;
   margin-bottom: 2rem;
+  z-index: 2;
 }
 
 @media (min-width: 768px) {
@@ -726,7 +772,6 @@
 @media (min-width: 768px) {
   .showcase-content {
     flex-direction: row;
-    gap: 2rem;
   }
 }
 
@@ -775,7 +820,7 @@
   bottom: 1.5rem;
   left: 50%;
   transform: translateX(-50%);
-  background: linear-gradient(to right, #ab0e52, #ff006e);
+  background: linear-gradient(to right, #5d12d2, #461b8d);
   color: white;
   padding: 0.75rem 2rem;
   border-radius: 9999px;
@@ -811,12 +856,8 @@
     height: 30px; /* גובה מותאם */
     justify-content: center; /* ממרכז את התוכן בתוך הכפתור */
     display: flex; /* וודא שהכפתור יתפקד כמו אלמנט flex */
+    background: linear-gradient(to right, #5d12d2, #461b8d);
 
-    background: linear-gradient(
-      to right,
-      #ab0e52,
-      #ff006e
-    ); /* גרדיאנט של צבעים */
     color: #fff; /* צבע טקסט לבן */
     border: none; /* לא יהיה גבול לכפתור */
     border-radius: 9999px; /* פינות מעוגלות */
@@ -851,7 +892,7 @@
   content: "";
   position: absolute;
   inset: -1px;
-  background: linear-gradient(to right, #ab0e52, #ff006e);
+  background: linear-gradient(to right, #5d12d2, #461b8d);
   border-radius: 9999px;
   z-index: -1;
   opacity: 0.5;
@@ -908,8 +949,8 @@
 
 /* Define CSS variables for consistent styling */
 :root {
-  --primary-color: #ff006e;
-  --secondary-color: #ab0e52;
+  --primary-color: #5d12d2;
+  --secondary-color: #461b8d;
   --text-color: #1e293b;
   --light-text: #64748b;
   --border-radius: 12px;
@@ -920,9 +961,9 @@
 .rotating-logo {
     position: absolute;
     left: 1%;
-    transform: translateX(-50%)translateY(40%);
+    transform: translateX(-50%)translateY(5%);
     width: 170px;
-    height: 170px;
+    height: 120px;
     z-index: 0;
     opacity: 0.6;
 
@@ -931,9 +972,9 @@
 .rotating-logo2 {
     position: absolute;
     left: 99%;
-    transform: translateX(-50%)translateY(40%);
+    transform: translateX(-50%)translateY(5%);
     width: 170px;
-    height: 170px;
+    height: 100px;
     z-index: 0;
     opacity: 0.6;
 
@@ -949,48 +990,39 @@
   }
   
   .logo-spin.headline-0 {
-    transform: rotate(0deg) scale(0.8) ;
+    transform: rotate(0deg) scale(1.5rem) ;
   }
   
   .logo-spin.headline-1 {
-    transform: rotate(90deg) scale(1.2);
+    transform: rotate(90deg) scale(2);
   }
   
-  .logo-spin.headline-2 {
-    transform: rotate(180deg) scale(1.7);
-  }
+  
   
 .headline-rotator {
     position: relative;
-    height: 20vh;
+    width: 100%;
     overflow: hidden;
-    
-  }
-  @media (min-width: 768px) {
-    .headline-rotator {
-        position: relative;
-        height: 50vh;
-        overflow: hidden;
-        
-      }
 
+    text-align: center;
   }
-
   
   .headline {
     position: absolute;
     width: 100%;
-    font-size: 2.5rem;
+    font-size: 1.8rem;
     font-weight: 700;
     line-height: 1.2;
     letter-spacing: -0.02em;
     color: transparent;
-    background: linear-gradient(to right, #db166b, #ff006e);
+    background: linear-gradient(to right, #5d12d2, #461b8d);
     -webkit-background-clip: text;
     background-clip: text;
     opacity: 0;
     transform: translateY(20px);
     transition: all 0.5s ease-in-out;
+    height: 100%;
+
   }
   
   .headline.active {
@@ -998,3 +1030,44 @@
     transform: translateY(0);
   }
   
+  .headline-container {
+    padding: 1rem 0;
+    margin-top: 15%;
+  }
+
+  
+  /* Tablet */
+  @media (min-width: 768px) {
+  
+  
+  
+    .headline {
+      font-size: 4rem;
+    }
+  }
+  
+  /* Desktop */
+  @media (min-width: 1024px) {
+  
+    .headline {
+      font-size: 4rem;
+    }
+  }
+  
+  /* Large Desktop */
+  @media (min-width: 1440px) {
+
+    .headline {
+      font-size: 4rem;
+    }
+  }
+  
+  /* Handle very small screens */
+  @media (max-width: 480px) {
+
+    .headline {
+      font-size: 1.5rem;
+    }
+  
+    
+  }

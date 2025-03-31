@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import { WidgetSlider } from "../../components/widgetSlider/widgetSlider";
 import {
+  ChevronRight,
   MessageCircle,
   Package,
   Sliders,
@@ -16,13 +17,8 @@ function Home() {
   const footerRef = useRef<HTMLDivElement>(null);
   const [showFloatingCTA, setShowFloatingCTA] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-  const [activeHeadline, setActiveHeadline] = useState(0);
 
-  const headlines = [
-    "Bring Your Game to the Home Screen",
-    "Always Visible. Always Played.",
-    "Boost Retention with Live Widgets"
-  ];
+  
 
   const scrollToFooter = () => {
     if (footerRef.current) {
@@ -31,9 +27,7 @@ function Home() {
   };
 
   useEffect(() => {
-    const headlineInterval = setInterval(() => {
-      setActiveHeadline((prev) => (prev + 1) % headlines.length);
-    }, 4000);
+ 
 
     const handleScroll = () => {
       const scrollY = window.scrollY;
@@ -60,7 +54,6 @@ function Home() {
     handleScroll();
 
     return () => {
-      clearInterval(headlineInterval);
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleResize);
     };
@@ -73,7 +66,7 @@ function Home() {
           <div className="container">
             <nav className="nav">
               <div className="logo">
-                <img src="/images/tapplogo.png" alt="Tapp Logo" />
+                <img src="/images/tapplogo1.png" alt="Tapp Logo" />
               </div>
               <button className="cta-button" onClick={scrollToFooter}>
                 <span className="cta-text">Request a demo</span>
@@ -81,30 +74,14 @@ function Home() {
 
               </button>
             </nav>
-            <div className="hero-grid">
+            {/* <div className="hero-grid">
               <div className="hero-content">
                 <div className="headline-container">
-                  <div className="rotating-logo">
-                    <img src="/images/piclogo.svg" alt="Rotating Logo" className={`logo-spin headline-${activeHeadline}`} />
-                    
-                  </div>
-                  <div className="rotating-logo2">
-                    <img src="/images/piclogo.svg" alt="Rotating Logo" className={`logo-spin headline-${activeHeadline}`} />
-                    
-                  </div>
-                  <div className="headline-rotator">
-                    {headlines.map((headline, index) => (
-                      <h3
-                        key={index}
-                        className={`headline ${index === activeHeadline ? 'active' : ''}`}
-                      >
-                        {headline}
-                      </h3>
-                    ))}
-                  </div>
+                <h3 className="h3-static"> Bring Your Game to the Home Screen <br/> Always Visible. Always Played.</h3>
+             
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </header>
       </AnimatedSection>
@@ -112,12 +89,19 @@ function Home() {
       <AnimatedSection variant="slide">
         <section className="widget-showcase">
           <div className="container">
-            <h2 className="section-title">Our Widget Gallery</h2>
+            {/* <h2 className="section-title">Our Widget Gallery</h2> */}
             <div className="showcase-content">
               {isMobile ? (
                 <>
+                  <div className="headline-container">
+                <h3 className="h3-static"> Bring Your Game to the Home Screen. </h3>
+                <h4 className="h4-static" > Always Visible.<br/>  Always Played.</h4>
+             
+                </div>
                   <WidgetSlider />
-                  <div className="feature-list">
+
+
+                  {/* <div className="feature-list">
                     <div className="feature-item">
                       <h3>
                         <TrendingUp size={22} /> Higher Retention
@@ -137,11 +121,32 @@ function Home() {
                         campaigns without a developer.
                       </p>
                     </div>
-                  </div>
+                  </div> */}
                 </>
               ) : (
                 <>
-                  <div className="feature-list">
+
+<div className="headline-container">
+                <h3 className="h3-static"> Bring Your Game to the Home Screen.</h3>
+                <h4 className="h4-static" > Always Visible.<br/>  Always Played.</h4>
+<p className="description">our widget gallery  <ChevronRight className="arrow-icon"/>    </p>
+<h3>
+                        <TrendingUp size={22} /> Higher Retention
+                      </h3>
+<p> Widgets of your game draw players in, reducing churn and increasing lifetime value.</p>
+<h3>
+<Plug size={22} /> Seamless Integration
+                      </h3>
+                      <p>
+                        Our plug-and-play SDK integrates in minutes. Our no-code
+                        web platform gives you full control to launch and manage
+                        campaigns without a developer.
+                      </p>
+
+
+                </div>
+                
+                  {/* <div className="feature-list">
                     <div className="feature-item">
                       <h3>
                         <TrendingUp size={22} /> Higher Retention
@@ -161,7 +166,7 @@ function Home() {
                         campaigns without a developer.
                       </p>
                     </div>
-                  </div>
+                  </div> */}
                   <WidgetSlider />
                 </>
               )}

@@ -21,7 +21,7 @@ const variants: Record<string, Variants> = {
     }
   },
   slide: {
-    hidden: { x: -400, opacity: 0 },
+    hidden: { x: -100, opacity: 0 },
     visible: { 
       x: 0,
       opacity: 1,

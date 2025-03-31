@@ -225,9 +225,13 @@ const Footer: React.FC = () => {
     }
 
     setError("");
-
     emailjs
-      .send("service_0ezklhs", "template_7v3kndh", formData, "Fkfih5ZdG7TdHdueW")
+    .send(
+      "service_v7z25x8",
+      "template_oaxumfr",
+      formData,
+      "HtFFe7u9CfbsTxN5w"
+    )
       .then(
         () => {
           alert("Your demo request was sent successfully!");

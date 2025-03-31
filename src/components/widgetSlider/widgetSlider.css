@@ -55,30 +55,30 @@
 }
 
 .nav-button {
-  background: rgba(235, 235, 235, 0.328);
-  border: none;
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  color: #9333ea;
-  box-shadow: 0 4px 6px -1px #ff006f6e, 0 2px 4px -2px rgba(0, 0, 0, 0.619);
-  transition: all 0.2s;
-  z-index: 10;
+    background-color: #2b1056 ; /* רקע סגול שיבליט את הכפתור */
+    color: white !important; /* החץ יהיה לבן */
+    border: none;
+    border-radius: 40%;
+    width: 50px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    z-index: 2; /* לוודא שהחצים תמיד מעל התוכן */
+
 }
 
 @media (min-width: 768px) {
   .nav-button {
-    width: 40px;
+    width: 50px;
     height: 40px;
   }
 }
 
 .nav-button:hover {
-  background: #f9fafb;
+  background: #461b8d;
   transform: scale(1.05);
 }
 
@@ -151,7 +151,5 @@
   background: #9333ea;
   transform: scale(1.2);
 }
-
-
 
 
