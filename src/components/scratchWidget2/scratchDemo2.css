@@ -1,0 +1,172 @@
+.scratch-card-yahtzee {
+    position: relative;
+    width: 300px; 
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 40px;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    }
+  
+    .scratch-background-yahtzee{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300px; 
+    height: 300px;
+    background-image: url('/images/backgroundScratch2.webp');
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+    border-radius: 40px;
+    
+    }
+    
+    .scratch-content-yahtzee {
+    
+    
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    text-align: center;
+    pointer-events: none;
+    }
+    
+    .prize-amount-yahtzee {
+        margin-top:15%;
+width: 70px;
+height: 60px;
+    }
+  
+  .prize-amount-yahtzee img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .won-prize-icon-yahtzee{
+    width: 40px; /* גודל התמונה של הפרס */
+    height: 30px;
+    object-fit: contain;
+    display: block;
+  }
+  .scratch-overlay-yahtzee {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    touch-action: none;
+    z-index: 2;
+  left:  -2%;
+  top: -2%;
+  }
+  
+  
+  .scratch-text-yahtzee {
+    position: absolute;
+    top: 48%;
+    left: 47%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    pointer-events: auto;
+    cursor: pointer;
+    z-index: 3;
+    width: 355px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .scratch-text-yahtzee img {
+    width: 80%;
+    height: auto;
+  }
+  
+  .collect-button-yahtzee {
+  background: #9333ea;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  pointer-events: auto;
+  }
+  
+  .collect-button-yahtzee:hover {
+  background: #7e22ce;
+  }
+  
+  
+  
+  @keyframes slideUpDownAnimation {
+    0% {
+      transform: translate(-50%, -50%) rotate(270deg) translateY(100%); /* מתחיל בתחתית */
+      opacity: 1; 
+    }
+    50% {
+      transform: translate(-50%, -50%) rotate(270deg) translateY(0); /* במיקום האמצעי (למעלה) */
+      opacity: 1; 
+    }
+    100% {
+      transform: translate(-50%, -50%) rotate(270deg) translateY(100%); /* בסוף, בחזרה לתחתית */
+      opacity: 1; 
+    }
+  }
+  
+  .pointer-container-yahtzee{
+    background-color: none !important;
+    position: absolute;
+    top: 65%;
+    left: 99%;
+    width: 100px ;
+    height: 100px ;
+    animation: slideUpDownAnimation 1.5s ease-in-out infinite ; /* אינסופית */
+    z-index: 99;
+    pointer-events: none;
+  }
+  
+  .pointer-guide-scratch-yahtzee {
+    background-color: none !important;
+  
+    position: absolute;
+  
+    transform: translate(-50%, -39%) rotate(35deg);
+    width: 180px;  /* הגדלתי את הגודל */
+    height: 180px; /* הגדלתי את הגודל */
+    z-index: 100;
+    pointer-events: none;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+  }
+  
+  
+  .collect-pointer-yahtzee{
+    background-color: none !important;
+  
+    position: absolute;
+    width: 300px;
+    height: 300px;
+  }
+  .collect-pointer-guide-yahtzee {
+    background-color: none !important;
+  
+    position: absolute;
+    top: 67%;
+    left: 20%;
+    width: 180px;
+    height: 180px;
+    z-index: 30;
+    pointer-events: none;
+    animation: tapAnimation 1s infinite ease-in-out;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+  }
+  

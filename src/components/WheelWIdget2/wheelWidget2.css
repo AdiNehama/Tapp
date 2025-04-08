@@ -192,7 +192,7 @@
   left: 60%;
   width: 140px;
   height: 140px;
-  transform: translate(-50%, -50%);
+  transform: translate(-65%, -50%) rotate(35deg) ;
   z-index: 20;
   pointer-events: none;
   animation: tapAnimation 1s infinite ease-in-out;

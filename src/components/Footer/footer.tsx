@@ -251,10 +251,10 @@ const Footer: React.FC = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (!formData.agreeToMailingList) {
-      setError("You must agree to join the mailing list.");
-      return;
-    }
+    // if (!formData.agreeToMailingList) {
+    //   setError("You must agree to join the mailing list.");
+    //   return;
+    // }
 
     setError("");
 
@@ -320,16 +320,17 @@ const Footer: React.FC = () => {
                 name="agreeToMailingList"
                 checked={formData.agreeToMailingList}
                 onChange={handleChange}
-                required
+                
               />
-              <label className="termsAccepted">
+              <label className="termsAccepted"    
+              >
                 I want to receive your newsletter
               </label>
             </div>
 
             {error && <p className="error-message">{error}</p>}
             <button type="submit" className="submit-button">
-              Book a Demo{" "}
+              Submit
             </button>
           </form>
         </div>

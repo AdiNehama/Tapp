@@ -1,7 +1,7 @@
 .phone-mockup {
   position: relative;
   margin: 0 auto;
-  width: 220px;
+  width: 230px;
   height: 450px;
   background: #000000;
   border-radius: 40px;
@@ -21,6 +21,12 @@
     box-shadow: 10px 7px 15px rgba(0, 0, 0, 0.4);
 
   }
+}
+
+.time{
+  font-family:  'San Francisco', sans-serif;
+  font-weight: 200;
+  font-size: small;
 }
 
 /* Side Buttons */
@@ -187,9 +193,8 @@
   height: 100%;
   padding: 45px 12px 12px;
   position: relative;
-  background-image: url("/images/phone-bg.webp");
-  background-size: cover;
-  background-position: top;
+  background-image: url("/images/phone-bg1.webp");
+  background-size:contain ;
   overflow: hidden;
 }
 
@@ -308,34 +313,6 @@
   }
 }
 
-.wifi-icon {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1px;
-  transform: rotate(45deg);
-  margin: 0 5px;
-}
-
-@media (min-width: 768px) {
-  .wifi-icon {
-    margin: 0 6px;
-  }
-}
-
-.wifi-icon span {
-  width: 2px;
-  height: 2px;
-  background: #fff;
-  border-radius: 1px;
-}
-
-@media (min-width: 768px) {
-  .wifi-icon span {
-    width: 3px;
-    height: 3px;
-  }
-}
 
 .battery {
   width: 15px;
@@ -356,10 +333,10 @@
 
 .battery-num {
   font-size: 8px;
-  color: #b1b1b1;
+  color: #999999;
   position: absolute;
   margin-top: -2px;
-  margin-left: 3px;
+  margin-left: 5px;
 }
 
 @media (min-width: 768px) {
@@ -436,6 +413,7 @@
 .overlay-image {
   object-fit: contain;
 }
+
 
 .app-icons {
   display: grid;

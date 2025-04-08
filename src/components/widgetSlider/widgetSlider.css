@@ -8,6 +8,7 @@
 @media (min-width: 768px) {
   .widget-slider {
     width: 100%;
+    margin-right: -7%;
   }
 }
 
@@ -18,13 +19,11 @@
   justify-content: center;
   width: 100%;
   max-width: 100%;
-  gap: 0.5rem;
 }
 
 @media (min-width: 768px) {
   .slider-content {
     max-width: 1200px;
-    gap: 2rem;
   }
 }
 
@@ -55,47 +54,75 @@
 }
 
 .nav-button {
-    background-color: #2b1056 ; /* רקע סגול שיבליט את הכפתור */
-    color: white !important; /* החץ יהיה לבן */
-    border: none;
-    border-radius: 40%;
-    width: 50px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.2s;
-    z-index: 2; /* לוודא שהחצים תמיד מעל התוכן */
-
-}
-
-@media (min-width: 768px) {
-  .nav-button {
-    width: 50px;
-    height: 40px;
-  }
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border-radius: 40%;
+  background: rgba(219, 218, 218, 0);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgb(92, 18, 210);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  color: #5d12d2;
+  box-shadow: 0 4px 6px rgba(93, 18, 210, 0.05);
 }
 
 .nav-button:hover {
-  background: #461b8d;
-  transform: scale(1.05);
+  background: rgba(93, 18, 210, 0.1);
+  border-color: rgba(93, 18, 210, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(93, 18, 210, 0.15);
 }
 
 .nav-button:active {
-  transform: scale(0.95);
+  transform: translateY(1px);
+  box-shadow: 0 2px 4px rgba(93, 18, 210, 0.1);
+}
+
+.nav-button .arror {
+  width: 32px;
+  height: 32px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-button.prev:hover .arror {
+  transform: translateX(-4px);
+}
+
+.nav-button.next:hover .arror {
+  transform: translateX(4px);
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .nav-button {
+    width: 45px;
+    height: 45px;
+  }
+
+  .nav-button .arror {
+    width: 24px;
+    height: 24px;
+  }
+
+  .slider-content {
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
 }
 
 .widget-info {
   text-align: center;
   max-width: 300px;
   font-family: "Comfortaa-Variable", sans-serif;
+  margin-top: -7%;
 }
 
 @media (min-width: 768px) {
   .widget-info {
-
-
     max-width: 400px;
   }
 }
@@ -151,5 +178,3 @@
   background: #9333ea;
   transform: scale(1.2);
 }
-
-

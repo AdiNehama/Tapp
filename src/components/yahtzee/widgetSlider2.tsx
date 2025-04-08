@@ -1,62 +1,38 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { PhoneMockup } from "../phoneMockup/phone";
-import { WheelDemo } from "../WheelWidget/wheelDemo";
-import { ScratchCard } from "../scrachWidget/scratchDemo";
-import { WheelWidget3 } from "../WheelWidget3/wheelWidget3";
+import { PhoneMockup2 } from "../yahtzee/phone2";
+import { WheelWidget4 } from "../WheelWidget4/wheelWidget4";
+import { ScratchCard2 } from "../scratchWidget2/scratchDemo2";
 
-import "./widgetSlider.css";
+import "../widgetSlider/widgetSlider.css";
 
 const widgets = [
   {
-    id: 1,
+    id: 4,
     name: "Prize Wheel",
     component: ({
       setShowImageOverlay,
     }: {
       showImageOverlay: boolean;
       setShowImageOverlay: (value: boolean) => void;
-    }) => <WheelDemo setShowImageOverlay={setShowImageOverlay} />,
+    }) => <WheelWidget4 setShowImageOverlay={setShowImageOverlay} />,
     description: "Engage users with a daily spin wheel widget",
   },
   {
-    id: 2,
+    id: 4,
     name: "Scratch Card",
     component: ({
       setShowImageOverlay,
     }: {
       showImageOverlay: boolean;
       setShowImageOverlay: (value: boolean) => void;
-    }) => <ScratchCard setShowImageOverlay={setShowImageOverlay} />,
-    description: "Instant win scratch cards on the home screen",
+    }) => <ScratchCard2 setShowImageOverlay={setShowImageOverlay} />,
+    description: "Engage users with a daily Scratch Card widget",
   },
-  // {
-  //   id: 1,
-  //   name: "Prize Wheel",
-  //   component: ({
-  //     setShowImageOverlay,
-  //   }: {
-  //     showImageOverlay: boolean;
-  //     setShowImageOverlay: (value: boolean) => void;
-  //   }) => <WheelWidget2 setShowImageOverlay={setShowImageOverlay} />,
-  //   description: "Engage users with a daily spin wheel widget",
-  // },
-  {
-    id: 3,
-    name: "Prize Wheel",
-    component: ({
-      setShowImageOverlay,
-    }: {
-      showImageOverlay: boolean;
-      setShowImageOverlay: (value: boolean) => void;
-    }) => <WheelWidget3 setShowImageOverlay={setShowImageOverlay} />,
-    description: "Engage users with a daily spin wheel widget",
-  },
- 
 ];
 
-export function WidgetSlider() {
+export function WidgetSlider2() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   const [showImageOverlay, setShowImageOverlay] = useState(false);
@@ -157,7 +133,7 @@ export function WidgetSlider() {
               }}
               className="slider-slide"
             >
-              <PhoneMockup
+              <PhoneMockup2
                 showImageOverlay={showImageOverlay}
                 paginate={paginate}
               >
@@ -165,7 +141,7 @@ export function WidgetSlider() {
                   showImageOverlay={showImageOverlay}
                   setShowImageOverlay={setShowImageOverlay}
                 />
-              </PhoneMockup>
+              </PhoneMockup2>
             </motion.div>
           </AnimatePresence>
         </div>

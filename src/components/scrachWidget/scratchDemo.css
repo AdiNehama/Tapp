@@ -15,7 +15,7 @@
   left: 0;
   width: 300px; 
   height: 300px;
-  background-image: url('/images/backgroundScratch.webp');
+  background-image: url('/images/backgroundScratch.webp') !important;
   background-size: cover;
   background-position: center;
   z-index: 0;
@@ -117,6 +117,7 @@ background: #7e22ce;
 }
 
 .pointer-container{
+  background-color: none !important;
   position: absolute;
   top: 65%;
   left: 99%;
@@ -128,6 +129,8 @@ background: #7e22ce;
 }
 
 .pointer-guide-scratch {
+  background-color: none !important;
+
   position: absolute;
 
   transform: translate(-50%, -39%) rotate(35deg);
@@ -140,11 +143,15 @@ background: #7e22ce;
 
 
 .collect-pointer{
+  background-color: none !important;
+
   position: absolute;
   width: 300px;
   height: 300px;
 }
 .collect-pointer-guide {
+  background-color: none !important;
+
   position: absolute;
   top: 67%;
   left: 20%;

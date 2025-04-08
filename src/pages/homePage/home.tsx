@@ -5,9 +5,9 @@ import {
   MessageCircle,
   Package,
   Sliders,
+  Sparkles,
   TrendingUp,
   Plug,
-  Sparkles
 } from "lucide-react";
 import "./home.css";
 import Footer from "../../components/Footer/footer";
@@ -18,8 +18,6 @@ function Home() {
   const [showFloatingCTA, setShowFloatingCTA] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
-  
-
   const scrollToFooter = () => {
     if (footerRef.current) {
       footerRef.current.scrollIntoView({ behavior: "smooth" });
@@ -27,8 +25,6 @@ function Home() {
   };
 
   useEffect(() => {
- 
-
     const handleScroll = () => {
       const scrollY = window.scrollY;
       const triggerHeight = 200;
@@ -70,8 +66,9 @@ function Home() {
               </div>
               <button className="cta-button" onClick={scrollToFooter}>
                 <span className="cta-text">Request a demo</span>
-                <span className="cta-icon"><Sparkles size={13} /></span>
-
+                <span className="cta-icon">
+                  <Sparkles size={13} />
+                </span>
               </button>
             </nav>
             {/* <div className="hero-grid">
@@ -100,7 +97,6 @@ function Home() {
                       </h3>
                     ))}
                   </div>
->>>>>>> 717b0024acba2d7ea61d162b394a5b7c6beb429a
                 </div>
               </div>
             </div> */}
@@ -116,12 +112,14 @@ function Home() {
               {isMobile ? (
                 <>
                   <div className="headline-container">
-                <h3 className="h3-static"> Bring Your Game to the Home Screen. </h3>
-                <h4 className="h4-static" > Always Visible.<br/>  Always Played.</h4>
-             
-                </div>
+                    <h3 className="h3-static">
+                      Bring Your Game to the Home Screen.
+                    </h3>
+                    <h4 className="h4-static">
+                      Always Visible. Always Played.
+                    </h4>
+                  </div>
                   <WidgetSlider />
-
 
                   {/* <div className="feature-list">
                     <div className="feature-item">
@@ -147,27 +145,18 @@ function Home() {
                 </>
               ) : (
                 <>
+                  <div className="headline-container">
+                    <h3 className="h3-static">
+                      Bring Your Game to the Home Screen
+                    </h3>
+                    <h4 className="h4-static">
+                      Always Visible. Always Played.
+                    </h4>
+                    <p className="description">
+                      our widget gallery <ChevronRight className="arrow-icon" size={20} />
+                    </p>
+                  </div>
 
-<div className="headline-container">
-                <h3 className="h3-static"> Bring Your Game to the Home Screen.</h3>
-                <h4 className="h4-static" > Always Visible.<br/>  Always Played.</h4>
-<p className="description">our widget gallery  <ChevronRight className="arrow-icon"/>    </p>
-<h3>
-                        <TrendingUp size={22} /> Higher Retention
-                      </h3>
-<p> Widgets of your game draw players in, reducing churn and increasing lifetime value.</p>
-<h3>
-<Plug size={22} /> Seamless Integration
-                      </h3>
-                      <p>
-                        Our plug-and-play SDK integrates in minutes. Our no-code
-                        web platform gives you full control to launch and manage
-                        campaigns without a developer.
-                      </p>
-
-
-                </div>
-                
                   {/* <div className="feature-list">
                     <div className="feature-item">
                       <h3>
@@ -200,27 +189,59 @@ function Home() {
       <AnimatedSection variant="bounce">
         <section className="benefits">
           <div className="container">
+            <h2 className="section-title">Why Tapp?</h2>
+            <div className="features-wrapper">
+  <div className="feature-card">
+    <div className="icon-wrapper pink">
+      <TrendingUp className="icon" />
+    </div>
+    <h3 className="feature-heading">Higher Retention</h3>
+    <p className="feature-text">
+      Widgets of your game draw players in, reducing churn and
+      increasing lifetime value
+    </p>
+  </div>
+
+  <div className="feature-card">
+    <div className="icon-wrapper indigo">
+      <Plug className="icon" />
+    </div>
+    <h3 className="feature-heading">Seamless Integration</h3>
+    <p className="feature-text">
+      Our plug-and-play SDK integrates in minutes.<br />
+      No-code web platform that gives you full control to launch and manage campaigns without a developer
+    </p>
+  </div>
+</div>
+
+          </div>
+        </section>
+      </AnimatedSection>
+
+      <AnimatedSection variant="bounce">
+        <section className="benefits">
+          <div className="container">
             <h2 className="section-title">How It Works</h2>
             <div className="benefits-grid">
-              <div className="benefit-card">
-                <MessageCircle className="benefit-icon purple" />
+              <div className="benefit-card">    <MessageCircle className="benefit-icon purple" />
                 <h3 className="benefit-title">
-                  Talk to Us & Define Your Use Case
+            
+                Talk to Us & Define Your Use Case
                 </h3>
                 <p className="benefit-description">
                   Together, we'll select the optimal widgets for your game
                 </p>
               </div>
-              <div className="benefit-card">
-                <Package className="benefit-icon blue" />
-                <h3 className="benefit-title">Get a Plug-and-Play SDK</h3>
+              <div className="benefit-card"><Package className="benefit-icon blue" />
+                <h3 className="benefit-title">                 
+                Get a Plug-and-Play SDK</h3>
                 <p className="benefit-description">
                   We develop a customized widget based on your use case
                 </p>
               </div>
-              <div className="benefit-card">
-                <Sliders className="benefit-icon pink" />
-                <h3 className="benefit-title">Manage Everything Remotely</h3>
+              <div className="benefit-card"> <Sliders className="benefit-icon red" />
+                <h3 className="benefit-title">                
+                Manage Everything Remotely</h3>
                 <p className="benefit-description">
                   Control your widgets through our no-code web platform, without
                   a developer

@@ -5,6 +5,8 @@ import Home from "../src/pages/homePage/home";
 
 import ScrollToTop from "../src/components/scrolltotop"; // ייבוא הקובץ
 import Ecommerce from "../src/components/ecommerce/ecommerce";
+import Yahtzee from "../src/components/yahtzee/yahtzee";
+
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/ecommerce" element={<Ecommerce />} />
+            <Route path="/yahtzee" element={<Yahtzee />} />
+
           </Routes>
         </main>
       </div>

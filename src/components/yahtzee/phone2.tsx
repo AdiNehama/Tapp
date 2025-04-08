@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import './phone.css';
+import '../phoneMockup/phone.css';
 
 interface PhoneMockupProps {
   children: ReactNode;
@@ -10,7 +10,7 @@ interface PhoneMockupProps {
 }
 
 
-export function PhoneMockup({ children, showImageOverlay ,paginate }: PhoneMockupProps) {
+export function PhoneMockup2({ children, showImageOverlay ,paginate }: PhoneMockupProps) {
 
   return (
     <div className="phone-mockup">
@@ -47,7 +47,7 @@ export function PhoneMockup({ children, showImageOverlay ,paginate }: PhoneMocku
           </div>
           <div className="widget-container">
             {children}
-            <div className="widget-label">Animals & Coins</div>
+            <div className="widget-label">Yahtzee</div>
 
           </div>
 
@@ -88,7 +88,7 @@ export function PhoneMockup({ children, showImageOverlay ,paginate }: PhoneMocku
             transition={{ duration: 0.5, ease: 'easeOut' }}
           >
        <motion.img
-  src="/images/animals.webp"
+  src="/images/yahtzee.png"
   alt="Prize"
   className="overlay-image"
   initial={{ y: 50, opacity: 0 }}
