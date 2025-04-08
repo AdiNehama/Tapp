@@ -71,35 +71,6 @@ function Home() {
                 </span>
               </button>
             </nav>
-            {/* <div className="hero-grid">
-              <div className="hero-content">
-                <div className="headline-container">
-                <h3 className="h3-static"> Bring Your Game to the Home Screen <br/> Always Visible. Always Played.</h3>
-             
-=======
-                <h3 className="h3-static"> Bring Your Game to the Home Screen</h3>
-
-                  <div className="rotating-logo">
-                    <img src="/images/piclogo.svg" alt="Rotating Logo" className={`logo-spin headline-${activeHeadline}`} />
-                    
-                  </div>
-                  <div className="rotating-logo2">
-                    <img src="/images/piclogo.svg" alt="Rotating Logo" className={`logo-spin headline-${activeHeadline}`} />
-                    
-                  </div>
-                  <div className="headline-rotator">
-                    {headlines.map((headline, index) => (
-                      <h3
-                        key={index}
-                        className={`headline ${index === activeHeadline ? 'active' : ''}`}
-                      >
-                        {headline}
-                      </h3>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div> */}
           </div>
         </header>
       </AnimatedSection>
@@ -107,7 +78,6 @@ function Home() {
       <AnimatedSection variant="slide">
         <section className="widget-showcase">
           <div className="container">
-            {/* <h2 className="section-title">Our Widget Gallery</h2> */}
             <div className="showcase-content">
               {isMobile ? (
                 <>
@@ -120,28 +90,6 @@ function Home() {
                     </h4>
                   </div>
                   <WidgetSlider />
-
-                  {/* <div className="feature-list">
-                    <div className="feature-item">
-                      <h3>
-                        <TrendingUp size={22} /> Higher Retention
-                      </h3>
-                      <p>
-                        Widgets of your game draw players in, reducing churn and
-                        increasing lifetime value.
-                      </p>
-                    </div>
-                    <div className="feature-item">
-                      <h3>
-                        <Plug size={22} /> Seamless Integration
-                      </h3>
-                      <p>
-                        Our plug-and-play SDK integrates in minutes. Our no-code
-                        web platform gives you full control to launch and manage
-                        campaigns without a developer.
-                      </p>
-                    </div>
-                  </div> */}
                 </>
               ) : (
                 <>
@@ -156,28 +104,6 @@ function Home() {
                       our widget gallery <ChevronRight className="arrow-icon" size={20} />
                     </p>
                   </div>
-
-                  {/* <div className="feature-list">
-                    <div className="feature-item">
-                      <h3>
-                        <TrendingUp size={22} /> Higher Retention
-                      </h3>
-                      <p>
-                        Widgets of your game draw players in, reducing churn and
-                        increasing lifetime value.
-                      </p>
-                    </div>
-                    <div className="feature-item">
-                      <h3>
-                        <Plug size={22} /> Seamless Integration
-                      </h3>
-                      <p>
-                        Our plug-and-play SDK integrates in minutes. Our no-code
-                        web platform gives you full control to launch and manage
-                        campaigns without a developer.
-                      </p>
-                    </div>
-                  </div> */}
                   <WidgetSlider />
                 </>
               )}
@@ -223,7 +149,8 @@ function Home() {
           <div className="container">
             <h2 className="section-title">How It Works</h2>
             <div className="benefits-grid">
-              <div className="benefit-card">    <MessageCircle className="benefit-icon purple" />
+              <div className="benefit-card">   
+              <MessageCircle className="benefit-icon purple" />
                 <h3 className="benefit-title">
             
                 Talk to Us & Define Your Use Case

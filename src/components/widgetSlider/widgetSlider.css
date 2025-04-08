@@ -99,8 +99,8 @@
 /* Mobile styles */
 @media (max-width: 768px) {
   .nav-button {
-    width: 45px;
-    height: 45px;
+    width: 30px;
+    height: 35px;
   }
 
   .nav-button .arror {

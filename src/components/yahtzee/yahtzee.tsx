@@ -134,7 +134,6 @@ function Home() {
                 </p>
               </div>
               <div className="benefit-card">
-                {" "}
                 <Sliders className="benefit-icon red" />
                 <h3 className="benefit-title">Manage Everything Remotely</h3>
                 <p className="benefit-description">
