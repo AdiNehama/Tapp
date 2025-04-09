@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import {useRef, useState, useEffect } from "react";
 import { WidgetSlider2 } from "../yahtzee/widgetSlider2";
 import {
   ChevronRight,
@@ -10,9 +10,11 @@ import {
 } from "lucide-react";
 import "../../pages/homePage/home.css";
 import { AnimatedSection } from "../../components/animate";
+import Footer from "../Footer/footer";
 
 function Home() {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const footerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -145,7 +147,11 @@ function Home() {
           </div>
         </section>
       </AnimatedSection>
+   
+      <div ref={footerRef}></div>
+      <Footer />
     </div>
+
   );
 }
 

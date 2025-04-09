@@ -10,7 +10,7 @@ import {
   Sparkles
 } from "lucide-react";
 import "../../pages/homePage/home.css";
-import Footer from "../../components/Footer/footer";
+import Footer2 from "../../components/Footer/footer2";
 import { AnimatedSection } from "../../components/animate";
 
 
@@ -260,7 +260,7 @@ function Ecommerce() {
       )}
 
       <div ref={footerRef}></div>
-      <Footer />
+      <Footer2 />
     </div>
   );
 }
