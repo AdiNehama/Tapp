@@ -163,7 +163,7 @@ export function WheelDemo({ setShowImageOverlay }: { setShowImageOverlay: (value
        <div className="pointer-container">
 
        <img
-         src="/images/finger.svg"
+         src="/images/finger.webp"
          alt="Click here"
          className="pointer-guide"
        />
@@ -196,7 +196,7 @@ export function WheelDemo({ setShowImageOverlay }: { setShowImageOverlay: (value
                               <div className="collect-pointer">
 
               <img
-              src="/images/finger.svg"
+              src="/images/finger.webp"
                 alt="Click here"
                 className="collect-pointer-guide"
               />
