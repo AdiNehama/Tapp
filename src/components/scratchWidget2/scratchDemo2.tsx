@@ -319,7 +319,7 @@ export function ScratchCard2({
           {showScratchPointer && (
             <div className="pointer-container-yahtzee">
               <img
-                src="/images/finger.svg"
+                src="/images/finger.webp"
                 alt="Click here"
                 className="pointer-guide-scratch-yahtzee"
               />
@@ -353,7 +353,7 @@ export function ScratchCard2({
             {showCollectPointer && (
               <div className="collect-pointer-yahtzee">
                 <img
-                  src="/images/finger.svg"
+                  src="/images/finger.webp"
                   alt="Click here"
                   className="collect-pointer-guide-yahtzee"
                 />

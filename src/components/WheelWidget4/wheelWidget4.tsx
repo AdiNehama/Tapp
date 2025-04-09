@@ -168,7 +168,7 @@ export function WheelWidget4({ setShowImageOverlay }: { setShowImageOverlay: (va
           <div className="pointer-container-yahtzee">
 
           <img
-            src="/images/finger.svg"
+            src="/images/finger.webp"
             alt="Click here"
             className="pointer-guide-yahtzee"
           />
@@ -202,7 +202,7 @@ export function WheelWidget4({ setShowImageOverlay }: { setShowImageOverlay: (va
                               <div className="collect-pointer-yahtzee">
 
               <img
-              src="/images/finger.svg"
+              src="/images/finger.webp"
                 alt="Click here"
                 className="collect-pointer-guide-yahtzee"
               />
