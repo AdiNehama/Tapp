@@ -203,7 +203,7 @@
 
 .pointer-container{
   background-color: none !important;
-
+  background: none !important;
   position: absolute;
   top: 50%;
   left: 97%;
@@ -217,7 +217,7 @@
 
 .pointer-guide  {
   background-color: none !important;
-
+  background: none !important;
   position: absolute;
   width: 180px;
   height: 180px;
@@ -229,14 +229,14 @@
 
 .collect-pointer{
   background-color: none !important;
-
+  background: none !important;
   position: absolute;
   width: 300px;
   height: 300px;
 }
 .collect-pointer-guide {
   background-color: none !important;
-
+  background: none !important;
   position: absolute;
   top: 67%;
   left: 20%;
