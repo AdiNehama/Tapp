@@ -167,7 +167,7 @@ export function WheelWidget3({ setShowImageOverlay }: { setShowImageOverlay: (va
           <div className="pointer-container">
 
           <img
-            src="/images/finger.svg"
+            src="/images/finger.webp"
             alt="Click here"
             className="pointer-guide"
           />
@@ -201,7 +201,7 @@ export function WheelWidget3({ setShowImageOverlay }: { setShowImageOverlay: (va
                               <div className="collect-pointer">
 
               <img
-              src="/images/finger.svg"
+              src="/images/finger.webp"
                 alt="Click here"
                 className="collect-pointer-guide"
               />
