@@ -88,7 +88,11 @@ export function PhoneMockup2({ children, showImageOverlay ,paginate }: PhoneMock
             transition={{ duration: 0.5, ease: 'easeOut' }}
           >
        <motion.img
+<<<<<<< HEAD
   src="/images/yahtzee2.webp"
+=======
+  src="/images/yahtzee1.webp"
+>>>>>>> 00e21f8b0867c55486d7dc1c753f055735eee663
   alt="Prize"
   className="overlay-image"
   initial={{ y: 50, opacity: 0 }}
