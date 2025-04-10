@@ -19,12 +19,11 @@
     border-radius: 50px;
     border: 12.5px solid #1c1c1c;
     box-shadow: 10px 7px 15px rgba(0, 0, 0, 0.4);
-
   }
 }
 
-.time{
-  font-family:  'San Francisco', sans-serif;
+.time {
+  font-family: "San Francisco", sans-serif;
   font-weight: 200;
   font-size: small;
 }
@@ -194,7 +193,7 @@
   padding: 45px 12px 12px;
   position: relative;
   background-image: url("/images/phone-bg1.webp");
-  background-size:contain ;
+  background-size: contain;
   overflow: hidden;
 }
 
@@ -313,7 +312,6 @@
   }
 }
 
-
 .battery {
   width: 15px;
   height: 8px;
@@ -408,10 +406,31 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
+
 }
 
 .overlay-image {
   object-fit: contain;
+}
+
+
+@media (max-width: 767px) {
+  .image-overlay {
+    top: 0;
+    left: 0;
+    height: 90%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .overlay-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
 
 
